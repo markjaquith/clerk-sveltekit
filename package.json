@@ -5,6 +5,12 @@
     "lint": "tsc"
   },
   "files": ["dist"],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "svelte": "./dist/index.js"
+    }
+  },
   "devDependencies": {
     "@babel/preset-typescript": "^7.18.6",
     "@changesets/cli": "^2.26.2",
