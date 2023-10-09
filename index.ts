@@ -1,1 +1,5 @@
-export { default as handleClerk } from "./src/handleClerk"
+export { default as SignIn } from './src/components/SignIn.svelte'
+export { default as SignUp } from './src/components/SignUp.svelte'
+export { default as UserButton } from './src/components/UserButton.svelte'
+export * from './src/clerkui'
+export * from './src/clerk'

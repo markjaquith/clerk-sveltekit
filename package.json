@@ -23,5 +23,10 @@
   "license": "MIT",
   "peerDependencies": {
     "@sveltejs/kit": "^1.25.0"
+  },
+  "dependencies": {
+    "@clerk/clerk-js": "^4.60.1",
+    "@clerk/clerk-sdk-node": "^4.12.12",
+    "@clerk/types": "^3.54.0"
   }
 }
