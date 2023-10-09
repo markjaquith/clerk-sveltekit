@@ -1,0 +1,27 @@
+{
+  "scripts": {
+    "build": "tsup index.ts --format cjs,esm --dts",
+    "release": "tsup index.ts --format cjs,esm --dts && changeset publish",
+    "lint": "tsc"
+  },
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.18.6",
+    "@changesets/cli": "^2.26.2",
+    "@sveltejs/kit": "^1.25.0",
+    "tsup": "^7.2.0",
+    "typescript": "^4.9.4",
+    "vite": "^4.4.11"
+  },
+  "name": "clerk-sveltekit",
+  "version": "0.1.0",
+  "description": "Adapter to use Clerk with SvelteKit",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "repository": "git@github.com:markjaquith/clerk-sveltekit.git",
+  "author": "Mark Jaquith <mark@jaquith.me>",
+  "license": "MIT",
+  "peerDependencies": {
+    "@sveltejs/kit": "^1.25.0"
+  }
+}
