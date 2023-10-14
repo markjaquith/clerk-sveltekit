@@ -1,5 +1,5 @@
 import { redirect, type Handle } from '@sveltejs/kit'
-import { verifySession } from './session'
+import { verifySession } from './session.js'
 
 export default function handleClerk({
 	debug = false,
