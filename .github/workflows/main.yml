@@ -5,7 +5,7 @@ on:
       - "**"
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -15,4 +15,4 @@ jobs:
       - name: build
         run: bun build 
       - name: Test
-        run: bun test
+        run: bun run test
