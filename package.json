@@ -13,7 +13,9 @@
     "lint": "prettier --plugin-search-dir . --check . && eslint .",
     "format": "prettier --plugin-search-dir . --write ."
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -47,6 +49,8 @@
     "eslint": "^8.51.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-svelte": "^2.34.0",
+    "prettier": "^2.8.0",
+    "prettier-plugin-svelte": "^2.8.0",
     "publint": "^0.2.4",
     "react": "^18.2.0",
     "svelte": "^4.0.0",

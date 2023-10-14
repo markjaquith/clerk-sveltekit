@@ -1,6 +1,7 @@
 .DS_Store
 node_modules
 /build
+/dist
 /.svelte-kit
 /package
 .env
@@ -11,3 +12,6 @@ node_modules
 pnpm-lock.yaml
 package-lock.json
 yarn.lock
+
+# Changesets Markdown Files
+.changeset/*.md

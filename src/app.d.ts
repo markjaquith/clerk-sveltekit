@@ -6,10 +6,10 @@ declare global {
 		interface Locals {
 			session:
 				| {
-						userId: string
-						claims: unknown
+						userId: string;
+						claims: unknown;
 				  }
-				| undefined
+				| undefined;
 		}
 		// interface PageData {}
 		// interface Platform {}
