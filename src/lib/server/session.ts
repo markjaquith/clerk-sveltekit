@@ -1,13 +1,18 @@
 import { createClerkClient } from '@clerk/clerk-sdk-node'
-import { CLERK_SECRET_KEY } from '$env/static/private'
 import { json } from '@sveltejs/kit'
 import type { RequestHandler, RequestEvent } from '@sveltejs/kit'
 
-const clerk = createClerkClient({ secretKey: CLERK_SECRET_KEY })
+let clerk: ReturnType<typeof createClerkClient> | null = null
 
-export const { users } = clerk
+export function createClient(secretKey: string) {
+	clerk = createClerkClient({ secretKey })
+}
 
 export const verifySession = async (sessionToken?: string) => {
+	if (!clerk) {
+		throw new Error('Clerk client not initialized')
+	}
+
 	if (sessionToken) {
 		try {
 			const claims = await clerk.verifyToken(sessionToken)
