@@ -1,7 +1,9 @@
 <script lang="ts">
-	import { clerk } from '../index.js'
+	import { ClerkLoaded } from '$lib/index'
 </script>
 
-{#if $clerk && !$clerk.user}
-	<slot />
-{/if}
+<ClerkLoaded let:clerk>
+	{#if clerk && !clerk.user}
+		<slot />
+	{/if}
+</ClerkLoaded>
