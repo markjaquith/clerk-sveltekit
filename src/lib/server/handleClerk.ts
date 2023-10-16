@@ -1,17 +1,18 @@
 import { redirect, type Handle } from '@sveltejs/kit'
 import { createClient, verifySession } from './session.js'
 
-export default function handleClerk({
-	debug = false,
-	protectedPaths = [],
-	signInUrl = '/sign-in',
-	secretKey = '',
-}: {
-	debug?: boolean
-	protectedPaths?: string[]
-	signInUrl?: string
-	secretKey: string
-}) {
+export default function handleClerk(
+	secretKey: string,
+	{
+		debug = false,
+		protectedPaths = [],
+		signInUrl = '/sign-in',
+	}: {
+		debug?: boolean
+		protectedPaths?: string[]
+		signInUrl?: string
+	},
+) {
 	return (async ({ event, resolve }) => {
 		createClient(secretKey)
 		const sessionToken = event.cookies.get('__session')
