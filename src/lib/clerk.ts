@@ -1,12 +1,11 @@
 import { writable, type Writable } from 'svelte/store'
 import Clerk from '@clerk/clerk-js'
-import type ClerkInstance from '@clerk/clerk-js'
 
-// Create a writable store for Clerk
-export const clerk: Writable<ClerkInstance | null> = writable(null)
+// Create a writable store for Clerk.
+export const clerk: Writable<Clerk | null> = writable(null)
 
-// Initialize Clerk once
-let clerkInstance: ClerkInstance | null = null
+// This stores the Clerk instance.
+let clerkInstance: Clerk | null = null
 
 export default async function initializeClerk(key: string): Promise<void> {
 	if (!clerkInstance && typeof window !== 'undefined') {
@@ -14,10 +13,10 @@ export default async function initializeClerk(key: string): Promise<void> {
 
 		await clerkInstance
 			.load({
-				afterSignInUrl: '/',
-				afterSignUpUrl: '/',
-				signInUrl: '/sign-in',
-				signUpUrl: '/sign-up',
+				afterSignInUrl: '/', // TODO: configurable
+				afterSignUpUrl: '/', // TODO: configurable
+				signInUrl: '/sign-in', // TODO: configurable
+				signUpUrl: '/sign-up', // TODO: configurable
 			})
 			.catch((error: Error) => {
 				console.error('Failed to load Clerk:', error)
