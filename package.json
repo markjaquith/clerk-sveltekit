@@ -51,7 +51,6 @@
     "prettier": "^2.8.0",
     "prettier-plugin-svelte": "^2.8.0",
     "publint": "^0.2.4",
-    "react": "^18.2.0",
     "svelte": "^4.0.0",
     "svelte-check": "^3.5.2",
     "tslib": "^2.6.2",
