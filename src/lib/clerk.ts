@@ -20,6 +20,7 @@ export async function initializeClerkClient(
 	options: ClerkOptions = DEFAULT_OPTIONS,
 ): Promise<void> {
 	if (!clerkInstance) {
+		console.log('Initializing Clerk client...')
 		clerkInstance = new Clerk(key)
 
 		await clerkInstance.load(options).catch((error: Error) => {

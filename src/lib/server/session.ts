@@ -5,7 +5,7 @@ import type { RequestHandler, RequestEvent } from '@sveltejs/kit'
 
 const clerk = createClerkClient({ secretKey: CLERK_SECRET_KEY })
 
-export const users = clerk.users
+export const { users } = clerk
 
 export const verifySession = async (sessionToken?: string) => {
 	if (sessionToken) {

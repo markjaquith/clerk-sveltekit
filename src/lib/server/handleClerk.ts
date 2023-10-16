@@ -30,12 +30,13 @@ export default function handleClerk({
 			debug && console.log('[Server Hook] No session token found in cookies.')
 		}
 
+		// Protect the protected routes.
 		if (
 			!event.locals.session &&
 			protectedPaths.find((path) => event.url.pathname.startsWith(path))
 		) {
 			debug && console.log('[Server Hook] No session found, redirecting to login screen.')
-			throw redirect(302, signInUrl)
+			throw redirect(303, signInUrl)
 		}
 
 		return resolve(event)
