@@ -39,7 +39,7 @@
     "@changesets/cli": "^2.26.2",
     "@clerk/clerk-js": "^4.61.0",
     "@clerk/clerk-sdk-node": "4.12.12",
-    "@clerk/types": "^3.54.0",
+    "@clerk/types": "^3.55.0",
     "@playwright/test": "^1.38.1",
     "@sveltejs/adapter-auto": "^2.1.0",
     "@sveltejs/kit": "^1.25.1",
