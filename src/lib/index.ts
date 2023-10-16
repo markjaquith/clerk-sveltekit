@@ -1,5 +1,7 @@
 export { default as SignIn } from './components/SignIn.svelte'
 export { default as SignUp } from './components/SignUp.svelte'
 export { default as UserButton } from './components/UserButton.svelte'
+export { default as SignedIn } from './components/SignedIn.svelte'
+export { default as SignedOut } from './components/SignedOut.svelte'
 export { clerkUI } from './clerkui.js'
 export { clerk, initializeClerkClient as initializeClerk } from './clerk.js'

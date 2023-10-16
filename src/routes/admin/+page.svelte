@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { clerk } from '$lib/clerk'
 	$: name = $clerk?.user?.fullName ?? 'buddy'
-
 	export let data
 </script>
 

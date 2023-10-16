@@ -1,16 +1,14 @@
 <script lang="ts">
-	import UserButton from '$lib/components/UserButton.svelte'
-
-	import { clerk } from '$lib/clerk'
-	$: signedIn = !!$clerk?.user
+	import { SignedIn, SignedOut, clerk } from '$lib/index'
 </script>
 
 <h2>Front Page</h2>
 
-{#if signedIn}
+<SignedIn>
 	<p>Welcome, {$clerk?.user?.fullName}!</p>
 	<p>Since you are signed in, you should be able to access the <a href="/admin">admin panel</a></p>
-{:else}
+</SignedIn>
+<SignedOut>
 	<p>You are not signed in.</p>
 	<p>
 		You should not be able to go to the <a href="/admin">admin panel</a> without signing in, because
@@ -20,4 +18,4 @@
 		<li><a href="/sign-in">Sign in</a></li>
 		<li><a href="/sign-up">Sign up</a></li>
 	</ul>
-{/if}
+</SignedOut>
