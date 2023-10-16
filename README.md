@@ -14,7 +14,7 @@ pnpm i clerk-sveltekit
 # yarn
 yarn add clerk-sveltekit
 
-#bun
+# bun
 bun i clerk-sveltekit
 ```
 
