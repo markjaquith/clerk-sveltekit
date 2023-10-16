@@ -1,7 +1,6 @@
-import { PUBLIC_CLERK_PUBLISHABLE_KEY } from '$env/static/public'
 import { writable, type Writable } from 'svelte/store'
-import { browser } from '$app/environment'
 import Clerk from '@clerk/clerk-js'
+import type { ClerkOptions } from '@clerk/types'
 
 // Create a writable store for Clerk.
 export const clerk: Writable<Clerk | null> = writable(null)
@@ -9,24 +8,24 @@ export const clerk: Writable<Clerk | null> = writable(null)
 // This stores the Clerk instance.
 let clerkInstance: Clerk | null = null
 
-export async function initializeClerk(): Promise<void> {
-	if (!clerkInstance && browser) {
-		clerkInstance = new Clerk(PUBLIC_CLERK_PUBLISHABLE_KEY)
+const DEFAULT_OPTIONS: ClerkOptions = {
+	afterSignInUrl: '/',
+	afterSignUpUrl: '/',
+	signInUrl: '/sign-in',
+	signUpUrl: '/sign-up',
+}
 
-		await clerkInstance
-			.load({
-				afterSignInUrl: '/', // TODO: configurable
-				afterSignUpUrl: '/', // TODO: configurable
-				signInUrl: '/sign-in', // TODO: configurable
-				signUpUrl: '/sign-up', // TODO: configurable
-			})
-			.catch((error: Error) => {
-				console.error('Failed to load Clerk:', error)
-			})
+export async function initializeClerkClient(
+	key: string,
+	options: ClerkOptions = DEFAULT_OPTIONS,
+): Promise<void> {
+	if (!clerkInstance) {
+		clerkInstance = new Clerk(key)
+
+		await clerkInstance.load(options).catch((error: Error) => {
+			console.error('Failed to load Clerk:', error)
+		})
 
 		clerk.set(clerkInstance)
 	}
 }
-
-// Initialize Clerk (should only run in the browser, once).
-initializeClerk()

@@ -32,7 +32,8 @@
   "author": "Mark Jaquith <mark@jaquith.me>",
   "license": "MIT",
   "peerDependencies": {
-    "svelte": "^4.0.0"
+    "svelte": "^4.0.0",
+    "@sveltejs/kit": "^1.25.1"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.18.6",

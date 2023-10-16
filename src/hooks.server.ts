@@ -5,7 +5,7 @@ import handleClerk from '$lib/server/handleClerk'
 export const handle: Handle = sequence(
 	handleClerk({
 		debug: true,
-		protectedPaths: ['/playground', '/insert', '/admin', '/create'],
+		protectedPaths: ['/admin'],
 		signInUrl: '/sign-in',
 	}),
 )
