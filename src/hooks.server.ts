@@ -1,6 +1,6 @@
-import type { Handle } from '@sveltejs/kit';
-import { sequence } from '@sveltejs/kit/hooks';
-import handleClerk from '$lib/server/handleClerk';
+import type { Handle } from '@sveltejs/kit'
+import { sequence } from '@sveltejs/kit/hooks'
+import handleClerk from '$lib/server/handleClerk'
 
 export const handle: Handle = sequence(
 	handleClerk({
@@ -8,4 +8,4 @@ export const handle: Handle = sequence(
 		protectedPaths: ['/playground', '/insert', '/admin', '/create'],
 		signInUrl: '/sign-in',
 	}),
-);
+)
