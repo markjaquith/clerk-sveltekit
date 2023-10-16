@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { SignedIn, SignedOut, clerk } from '$lib/index'
+	import { SignedIn, SignedOut } from '$lib/index'
 </script>
 
 <h2>Front Page</h2>
 
-<SignedIn>
-	<p>Welcome, {$clerk?.user?.fullName}!</p>
+<SignedIn let:user>
+	<p>Welcome, {user?.fullName}!</p>
 	<p>Since you are signed in, you should be able to access the <a href="/admin">admin panel</a></p>
 </SignedIn>
 <SignedOut>
