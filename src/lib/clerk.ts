@@ -7,7 +7,7 @@ export const clerk: Writable<Clerk | null> = writable(null)
 // This stores the Clerk instance.
 let clerkInstance: Clerk | null = null
 
-export default async function initializeClerk(key: string): Promise<void> {
+export async function initializeClerk(key: string): Promise<void> {
 	if (!clerkInstance && typeof window !== 'undefined') {
 		clerkInstance = new Clerk(key)
 

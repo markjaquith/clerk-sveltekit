@@ -60,3 +60,5 @@ export const clerkUI = (node: HTMLDivElement, { clerk, componentType, props }: C
 		},
 	}
 }
+
+export default clerkUI
