@@ -18,7 +18,7 @@ yarn add clerk-sveltekit
 bun i clerk-sveltekit
 ```
 
-Add these values to your `.env` (get them from Clerk after create an application there):
+Add these values to your `.env` (get them from Clerk after creating an application there):
 
 ```env
 PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_abcdefg123
