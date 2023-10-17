@@ -30,7 +30,7 @@ Add this to `src/hooks.server.ts` (or integrate this code with your existing `ho
 ```typescript
 import type { Handle } from '@sveltejs/kit'
 import { sequence } from '@sveltejs/kit/hooks'
-import handleClerk from '$lib/server/handleClerk'
+import handleClerk from 'clerk-sveltekit'
 import { CLERK_SECRET_KEY } from '$env/static/private'
 
 export const handle: Handle = sequence(
@@ -47,7 +47,7 @@ Add this to `src/hooks.client.ts`:
 
 ```typescript
 import { PUBLIC_CLERK_PUBLISHABLE_KEY } from '$env/static/public'
-import { initializeClerkClient } from './lib/clerk.js'
+import { initializeClerkClient } from 'clerk-sveltekit'
 
 initializeClerkClient(PUBLIC_CLERK_PUBLISHABLE_KEY, {
 	afterSignInUrl: '/admin/',
