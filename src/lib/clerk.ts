@@ -5,9 +5,6 @@ import type { ClerkOptions } from '@clerk/types'
 // Create a writable store for Clerk.
 export const clerk: Writable<Clerk | null> = writable(null)
 
-// This stores the Clerk instance.
-let clerkInstance: Clerk | null = null
-
 const DEFAULT_OPTIONS: ClerkOptions = {
 	afterSignInUrl: '/',
 	afterSignUpUrl: '/',
@@ -19,14 +16,12 @@ export async function initializeClerkClient(
 	key: string,
 	options: ClerkOptions = DEFAULT_OPTIONS,
 ): Promise<void> {
-	if (!clerkInstance) {
-		console.log('Initializing Clerk client...')
-		clerkInstance = new Clerk(key)
+	console.log('Initializing Clerk client...')
+	const clerkInstance = new Clerk(key)
 
-		await clerkInstance.load(options).catch((error: Error) => {
-			console.error('Failed to load Clerk:', error)
-		})
+	await clerkInstance.load(options).catch((error: Error) => {
+		console.error('Failed to load Clerk:', error)
+	})
 
-		clerk.set(clerkInstance)
-	}
+	clerk.set(clerkInstance)
 }
