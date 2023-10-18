@@ -1,14 +1,14 @@
 <script lang="ts">
-	import { SignedIn, SignedOut } from '$lib/index'
+	import { clerk } from '$lib/clerk'
+	$: signedIn = !!$clerk?.user
 </script>
 
 <h2>Front Page</h2>
 
-<SignedIn let:user>
-	<p>Welcome, {user?.fullName}!</p>
+{#if signedIn}
+	<p>Welcome, {$clerk?.user?.fullName}!</p>
 	<p>Since you are signed in, you should be able to access the <a href="/admin">admin panel</a></p>
-</SignedIn>
-<SignedOut>
+{:else}
 	<p>You are not signed in.</p>
 	<p>
 		You should not be able to go to the <a href="/admin">admin panel</a> without signing in, because
@@ -18,4 +18,4 @@
 		<li><a href="/sign-in">Sign in</a></li>
 		<li><a href="/sign-up">Sign up</a></li>
 	</ul>
-</SignedOut>
+{/if}
