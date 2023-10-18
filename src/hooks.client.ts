@@ -1,5 +1,5 @@
 import { PUBLIC_CLERK_PUBLISHABLE_KEY } from '$env/static/public'
-import { initializeClerkClient } from './lib/clerk.js'
+import { initializeClerkClient } from './lib/client/clerk.js'
 
 initializeClerkClient(PUBLIC_CLERK_PUBLISHABLE_KEY, {
 	afterSignInUrl: '/admin/',

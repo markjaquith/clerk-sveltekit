@@ -1,5 +1,5 @@
 <script lang="ts">
-	import SignUp from '$lib/components/SignUp.svelte'
+	import SignUp from '$lib/client/SignUp.svelte'
 </script>
 
 <div>

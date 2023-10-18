@@ -1,6 +1,6 @@
 <script lang="ts">
-	import UserButton from '$lib/components/UserButton.svelte'
-	import { clerk } from '$lib/clerk.js'
+	import UserButton from '$lib/client/UserButton.svelte'
+	import { clerk } from '$lib/client/clerk.js'
 </script>
 
 <header>

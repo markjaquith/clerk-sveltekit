@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ClerkLoaded } from '$lib/index.js'
+	import ClerkLoaded from '$lib/client/ClerkLoaded.svelte'
 </script>
 
 <ClerkLoaded let:clerk>
