@@ -20,6 +20,76 @@
     ".": {
       "types": "./dist/index.d.ts",
       "svelte": "./dist/index.js"
+    },
+    "./client": {
+      "types": "./dist/client/index.d.ts",
+      "svelte": "./dist/client/index.js"
+    },
+    "./server": {
+      "types": "./dist/server/index.d.ts",
+      "svelte": "./dist/server/index.js"
+    },
+    "./client/ClerkLoaded.svelte": {
+      "types": "./dist/client/ClerkLoaded.svelte.d.ts",
+      "svelte": "./dist/client/ClerkLoaded.svelte"
+    },
+    "./client/ClerkLoading.svelte": {
+      "types": "./dist/client/ClerkLoading.svelte.d.ts",
+      "svelte": "./dist/client/ClerkLoading.svelte"
+    },
+    "./client/SignedIn.svelte": {
+      "types": "./dist/client/SignedIn.svelte.d.ts",
+      "svelte": "./dist/client/SignedIn.svelte"
+    },
+    "./client/SignedOut.svelte": {
+      "types": "./dist/client/SignedOut.svelte.d.ts",
+      "svelte": "./dist/client/SignedOut.svelte"
+    },
+    "./client/SignIn.svelte": {
+      "types": "./dist/client/SignIn.svelte.d.ts",
+      "svelte": "./dist/client/SignIn.svelte"
+    },
+    "./client/SignUp.svelte": {
+      "types": "./dist/client/SignUp.svelte.d.ts",
+      "svelte": "./dist/client/SignUp.svelte"
+    },
+    "./client/UserButton.svelte": {
+      "types": "./dist/client/UserButton.svelte.d.ts",
+      "svelte": "./dist/client/UserButton.svelte"
+    }
+  },
+  "typesVersions": {
+    ">4.0": {
+      "index.d.ts": [
+        "./dist/index.d.ts"
+      ],
+      "server": [
+        "./dist/server/index.d.ts"
+      ],
+      "client": [
+        "./dist/client/index.d.ts"
+      ],
+      "client/ClerkLoaded.svelte": [
+        "./dist/client/ClerkLoaded.svelte.d.ts"
+      ],
+      "client/ClerkLoading.svelte": [
+        "./dist/client/ClerkLoading.svelte.d.ts"
+      ],
+      "client/SignedIn.svelte": [
+        "./dist/client/SignedIn.svelte.d.ts"
+      ],
+      "client/SignedOut.svelte": [
+        "./dist/client/SignedOut.svelte.d.ts"
+      ],
+      "client/SignIn.svelte": [
+        "./dist/client/SignIn.svelte.d.ts"
+      ],
+      "client/SignUp.svelte": [
+        "./dist/client/SignUp.svelte.d.ts"
+      ],
+      "client/UserButton.svelte": [
+        "./dist/client/UserButton.svelte.d.ts"
+      ]
     }
   },
   "name": "clerk-sveltekit",
