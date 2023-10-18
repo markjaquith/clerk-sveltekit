@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { clerk } from '$lib/clerk'
+	import { clerk } from '$lib/clerk.js'
 	$: name = $clerk?.user?.fullName ?? 'buddy'
 
 	export let data

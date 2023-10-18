@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { clerk } from '$lib/index'
+	import { clerk } from '$lib/index.js'
 </script>
 
 {#if !$clerk}

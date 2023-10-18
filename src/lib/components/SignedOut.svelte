@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ClerkLoaded } from '$lib/index'
+	import { ClerkLoaded } from '$lib/index.js'
 </script>
 
 <ClerkLoaded let:clerk>
