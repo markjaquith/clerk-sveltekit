@@ -1,4 +1,4 @@
-import type Clerk from '@clerk/clerk-js'
+import type Clerk from '@clerk/types'
 import type { SignInProps, SignUpProps, UserButtonProps } from '@clerk/types'
 
 type ComponentPropsMap = {

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import UserButton from '$lib/client/UserButton.svelte'
-	import { clerk } from '$lib/client/clerk.js'
+	import SignedIn from '$lib/client/SignedIn.svelte'
+	import SignedOut from '$lib/client/SignedOut.svelte'
 </script>
 
 <header>
@@ -11,11 +12,13 @@
 		<a href="/admin">Admin Panel</a>
 	</div>
 	<div>
-		{#if $clerk?.user}
+		<SignedIn>
 			<UserButton afterSignOutUrl="/" />
-		{:else}
+		</SignedIn>
+
+		<SignedOut>
 			<a href="/sign-in">Sign in</a> <span>|</span> <a href="/sign-up">Sign up</a>
-		{/if}
+		</SignedOut>
 	</div>
 </header>
 

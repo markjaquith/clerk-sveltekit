@@ -1,14 +1,16 @@
 <script lang="ts">
-	import { clerk } from '$lib/client/clerk.js'
-	$: signedIn = !!$clerk?.user
+	import SignedIn from '$lib/client/SignedIn.svelte'
+	import SignedOut from '$lib/client/SignedOut.svelte'
 </script>
 
 <h2>Front Page</h2>
 
-{#if signedIn}
-	<p>Welcome, {$clerk?.user?.fullName}!</p>
+<SignedIn let:user>
+	<p>Welcome, {user?.fullName}!</p>
 	<p>Since you are signed in, you should be able to access the <a href="/admin">admin panel</a></p>
-{:else}
+</SignedIn>
+
+<SignedOut>
 	<p>You are not signed in.</p>
 	<p>
 		You should not be able to go to the <a href="/admin">admin panel</a> without signing in, because
@@ -18,4 +20,4 @@
 		<li><a href="/sign-in">Sign in</a></li>
 		<li><a href="/sign-up">Sign up</a></li>
 	</ul>
-{/if}
+</SignedOut>

@@ -25,3 +25,5 @@ export async function initializeClerkClient(
 
 	clerk.set(clerkInstance)
 }
+
+export { clerkUI } from './clerkui.js'

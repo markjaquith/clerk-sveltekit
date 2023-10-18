@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { clerk } from '$lib/client/clerk.js'
-	import { clerkUI } from '$lib/index.js'
+	import { clerk, clerkUI } from './index.js'
 	import type { SignUpProps } from '@clerk/types'
 	type $$Props = SignUpProps
 </script>
