@@ -9,7 +9,7 @@
 	const RETRY_EVERY = 100
 	const CANCEL_AFTER = 5000
 
-	let afterSignInUrl = $$props.afterSignInUrl || '/boo'
+	let afterSignInUrl = $$props.afterSignInUrl || '/'
 	let showForm = false
 	let timeout: ReturnType<typeof setTimeout>
 
@@ -25,7 +25,7 @@
 		if (!showForm) {
 			const url = new URL(window.location.toString())
 			if (url.searchParams.has('afterSignInUrl')) {
-				redirectOnceLoggedIn(url.searchParams.get('afterSignInUrl') ?? '/foo')
+				redirectOnceLoggedIn(url.searchParams.get('afterSignInUrl') ?? '/')
 				setTimeout(() => clearTimeout(timeout), CANCEL_AFTER)
 			} else {
 				showForm = true
