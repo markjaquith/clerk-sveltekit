@@ -20,11 +20,11 @@ jobs:
         run: bun i --frozen-lockfile
       - name: build
         run: bun run build
-      # - name: Create Release Pull Request or Publish
-      #   id: changesets
-      #   uses: changesets/action@v1
-      #   with:
-      #     publish: bun run release
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Create Release Pull Request or Publish
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          publish: bun run release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
