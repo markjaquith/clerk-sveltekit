@@ -99,7 +99,10 @@
   "svelte": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "type": "module",
-  "repository": "git@github.com:markjaquith/clerk-sveltekit.git",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/markjaquith/clerk-sveltekit.git"
+  },
   "author": "Mark Jaquith <mark@jaquith.me>",
   "license": "MIT",
   "peerDependencies": {
