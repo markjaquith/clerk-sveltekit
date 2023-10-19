@@ -1,10 +1,11 @@
 {
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build && npm run package",
+    "build": "vite build && bun run package",
     "preview": "vite preview",
     "package": "svelte-kit sync && svelte-package && publint",
-    "prepublishOnly": "npm run package",
+    "prepublishOnly": "bun run package",
+    "release": "bun run build && changeset publish",
     "test": "bun test src && playwright test",
     "test:unit": "bun test src",
     "test:e2e": "playwright test",
