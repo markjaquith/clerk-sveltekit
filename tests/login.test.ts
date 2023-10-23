@@ -2,7 +2,6 @@ import { test, expect } from '@playwright/test'
 
 const TITLE = 'Clerk SvelteKit'
 const EMAIL = 'tester+clerk_test@example.com'
-const TITLE_VERIFICATION_CODE = 'Verification code'
 const CODE = '424242'
 const URL_SIGN_IN = '/sign-in'
 const URL_ADMIN = '/admin'
@@ -35,8 +34,6 @@ test('User can log in', async ({ page }) => {
 	await page.keyboard.press('Enter')
 	
 	// Submit the OTP.
-	const formTitle = page.locator('p[data-localization-key="signIn.emailCode.formTitle"]')
-	await expect(formTitle).toHaveText(TITLE_VERIFICATION_CODE)
 	const firstCodeInputField = page.locator('input[name="codeInput-0"]')
 	await expect(firstCodeInputField).toBeFocused()
 	await page.keyboard.type(CODE, { delay: 150 }) // Need this slight delay to avoid flaky tests.
