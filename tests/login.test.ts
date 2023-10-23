@@ -21,7 +21,7 @@ test('User cannot access admin if not logged in', async ({ page }) => {
 	await page.waitForURL(URL_SIGN_IN)
 })
 
-test('User can log in', async ({ context, browser, page }) => {
+test('User can log in', async ({ context, page }) => {
 	// Navigate to sign in page.
 	await page.goto(URL_ROOT)
 	const signIn = page.getByTestId('sign-in')
@@ -53,10 +53,14 @@ test('User can log in', async ({ context, browser, page }) => {
 
 	// Delete the session cookie to simulate finishing OAuth login.
 	// TODO: move this to a helper function.
-	const cookies = await context.cookies()
-	const otherCookies = cookies.filter(cookie => cookie.name !== '__session')
+	const oldCookies = await context.cookies()
+	const otherCookies = oldCookies.filter(cookie => cookie.name !== '__session')
 	context.clearCookies()
 	context.addCookies(otherCookies)
+
+	// Verify that we really do not have a __session cookie.
+	const cookies = await context.cookies()
+	expect(cookies).not.toContain('__session')
 
 	// Go to the sign-in page with an afterSignInUrl param.
 	await page.goto(URL_SIGN_IN + '?afterSignInUrl=' + URL_ADMIN)
