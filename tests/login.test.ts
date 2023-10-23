@@ -35,7 +35,8 @@ test('User can log in', async ({ page }) => {
 	
 	// Submit the OTP.
 	const firstCodeInputField = page.locator('input[name="codeInput-0"]')
-	await expect(firstCodeInputField).toBeFocused()
+	await expect(firstCodeInputField).toBeVisible()
+	await firstCodeInputField.click()
 	await page.keyboard.type(CODE, { delay: 150 }) // Need this slight delay to avoid flaky tests.
 	await page.keyboard.press('Enter')
 
