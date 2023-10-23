@@ -34,6 +34,8 @@ test('User can log in', async ({ page }) => {
 	await page.keyboard.press('Enter')
 	
 	// Submit the OTP.
+	await page.waitForTimeout(5000)
+	await page.screenshot({ path: 'test-results/after-email.png' });
 	const firstCodeInputField = page.locator('input[name="codeInput-0"]')
 	await expect(firstCodeInputField).toBeVisible()
 	await firstCodeInputField.click()

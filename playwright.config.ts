@@ -10,6 +10,7 @@ const config: PlaywrightTestConfig = {
 	reporter: [
 		['list'], ['html'],
 	],
+	outputDir: 'test-results',
 }
 
 export default config
