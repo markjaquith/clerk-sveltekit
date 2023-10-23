@@ -17,13 +17,13 @@ export async function initializeClerkClient(
 	options: ClerkOptions = DEFAULT_OPTIONS,
 ): Promise<void> {
 	console.log('Initializing Clerk client...')
-	const clerkInstance = new Clerk(key)
+	const instance = new Clerk(key)
 
-	await clerkInstance.load(options).catch((error: Error) => {
+	await instance.load(options).catch((error: Error) => {
 		console.error('Failed to load Clerk:', error)
 	})
 
-	clerk.set(clerkInstance)
+	clerk.set(instance)
 }
 
 export { clerkUI } from './clerkui.js'
