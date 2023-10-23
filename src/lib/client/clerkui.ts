@@ -1,5 +1,4 @@
-import type Clerk from '@clerk/types'
-import type { SignInProps, SignUpProps, UserButtonProps } from '@clerk/types'
+import type { Clerk, SignInProps, SignUpProps, UserButtonProps } from '@clerk/types'
 
 type ComponentPropsMap = {
 	SignIn: SignInProps
