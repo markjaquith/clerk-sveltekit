@@ -16,11 +16,11 @@ export async function initializeClerkClient(
 	key: string,
 	options: ClerkOptions = DEFAULT_OPTIONS,
 ): Promise<void> {
-	console.log('Initializing Clerk client...')
+	console.log('[ClerkSvelteKit] Initializing Clerk client...')
 	const instance = new Clerk(key)
 
 	await instance.load(options).catch((error: Error) => {
-		console.error('Failed to load Clerk:', error)
+		console.error('[Clerk SvelteKit] Failed to load Clerk:', error)
 	})
 
 	clerk.set(instance)
