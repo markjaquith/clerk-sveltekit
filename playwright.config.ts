@@ -7,10 +7,6 @@ const config: PlaywrightTestConfig = {
 	},
 	testDir: 'tests',
 	testMatch: /(.+\.)?(test|spec)\.[jt]s/,
-	reporter: [
-		['list'], ['html'],
-	],
-	outputDir: 'test-results',
 }
 
 export default config

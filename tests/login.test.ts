@@ -32,10 +32,14 @@ test('User can log in', async ({ page }) => {
 	const email = page.locator('input[name="identifier"][type="email"]')
 	await email.fill(EMAIL)
 	await page.keyboard.press('Enter')
+	try {
+		await expect(email).not.toBeVisible()
+	} catch (e) {
+		const errorMessage = page.locator('#error-identifier')
+		throw new Error(`Error submitting email (${EMAIL}): ${await errorMessage.textContent()}`)
+	}
 	
 	// Submit the OTP.
-	await page.waitForTimeout(5000)
-	await page.screenshot({ path: 'test-results/after-email.png' });
 	const firstCodeInputField = page.locator('input[name="codeInput-0"]')
 	await expect(firstCodeInputField).toBeVisible()
 	await firstCodeInputField.click()
