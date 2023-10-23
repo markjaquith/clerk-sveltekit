@@ -22,7 +22,7 @@ export default function handleClerk(
 		if (sessionToken) {
 			debug && console.log('[Clerk SvelteKit] Found session token in cookies.')
 			try {
-				const session = await verifySession(sessionToken)
+				const session = await verifySession(sessionToken, { debug })
 				if (session) {
 					debug && console.log('[Clerk SvelteKit] Session verified successfully.')
 					event.locals.session = session
