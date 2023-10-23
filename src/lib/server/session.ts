@@ -8,20 +8,16 @@ export function createClient(secretKey: string) {
 	clerk = createClerkClient({ secretKey })
 }
 
-export const verifySession = async (sessionToken: string, { debug } = { debug: false }) => {
+export const verifySession = async (sessionToken: string) => {
 	if (!clerk) {
 		throw new Error('Clerk client not initialized')
 	}
 
 	if (sessionToken) {
-		try {
-			const claims = await clerk.verifyToken(sessionToken)
-			return {
-				userId: claims.sub,
-				claims,
-			}
-		} catch (err) {
-			debug && console.warn('Verification Error', err)
+		const claims = await clerk.verifyToken(sessionToken)
+		return {
+			userId: claims.sub,
+			claims,
 		}
 	}
 }
