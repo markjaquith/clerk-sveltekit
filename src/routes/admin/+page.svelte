@@ -12,6 +12,6 @@
 	<p>
 		Since you are here, you get to know a <b>secret</b> that was loaded in a
 		<code>+page.server.ts</code>
-		file: <em>{data.secret}</em>
+		file: <em data-testid="server-secret">{data.secret}</em>
 	</p>
 </SignedIn>

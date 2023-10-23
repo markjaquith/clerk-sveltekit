@@ -13,11 +13,13 @@
 	</div>
 	<div>
 		<SignedIn>
-			<UserButton afterSignOutUrl="/" />
+			<div data-testid="user-button">
+				<UserButton afterSignOutUrl="/" />
+			</div>
 		</SignedIn>
 
 		<SignedOut>
-			<a href="/sign-in">Sign in</a> <span>|</span> <a href="/sign-up">Sign up</a>
+			<a data-testid="sign-in" href="/sign-in">Sign in</a> <span>|</span> <a href="/sign-up">Sign up</a>
 		</SignedOut>
 	</div>
 </header>
