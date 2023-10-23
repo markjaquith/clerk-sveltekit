@@ -20,5 +20,7 @@ jobs:
         run: bun run build
       - name: Install Playwright Browsers
         run: bun run playwright install
-      - name: Test
-        run: bun run test
+      - name: Unit Tests
+        run: bun run test:unit
+      - name: E2E Tests
+        run: bun run test:e2e
