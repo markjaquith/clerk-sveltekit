@@ -26,7 +26,10 @@
 			const url = new URL(window.location.toString())
 			if (url.searchParams.has('afterSignUpUrl')) {
 				redirectOnceLoggedIn(url.searchParams.get('afterSignUpUrl') ?? '/')
-				setTimeout(() => clearTimeout(timeout), CANCEL_AFTER)
+				setTimeout(() => {
+					clearTimeout(timeout)
+					showForm = true
+				}, CANCEL_AFTER)
 			} else {
 				showForm = true
 			}
