@@ -1,5 +1,11 @@
 # clerk-sveltekit
 
+## 0.1.3
+
+### Patch Changes
+
+- c775aae: Improved documentation and tests
+
 ## 0.1.2
 
 ### Patch Changes
