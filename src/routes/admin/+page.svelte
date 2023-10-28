@@ -14,4 +14,5 @@
 		<code>+page.server.ts</code>
 		file: <em data-testid="server-secret">{data.secret}</em>
 	</p>
+	<p>You can also view <a href="/admin/profile">your profile</a>.</p>
 </SignedIn>

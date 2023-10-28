@@ -41,7 +41,7 @@ export default function handleClerk(
 			protectedPaths.find((path) => event.url.pathname.startsWith(path))
 		) {
 			debug && console.log('[Clerk SvelteKit] No session found, redirecting to login screen.')
-			throw redirect(303, signInUrl)
+			throw redirect(303, signInUrl + '?afterSignInUrl=' + event.url.pathname)
 		}
 
 		return resolve(event)

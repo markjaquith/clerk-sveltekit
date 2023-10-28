@@ -5,6 +5,7 @@ const EMAIL = 'tester+clerk_test@example.com'
 const CODE = '424242'
 const URL_SIGN_IN = '/sign-in'
 const URL_ADMIN = '/admin'
+const URL_PROFILE = '/admin/profile'
 const URL_ROOT = '/'
 const SERVER_SECRET = 'SvelteKit is awesome'
 
@@ -18,7 +19,9 @@ test('User starts logged out', async ({ page }) => {
 
 test('User cannot access admin if not logged in', async ({ page }) => {
 	await page.goto(URL_ADMIN)
-	await page.waitForURL(URL_SIGN_IN)
+	await page.waitForURL(URL_SIGN_IN + '?afterSignInUrl=' + URL_ADMIN)
+	await page.goto(URL_PROFILE)
+	await page.waitForURL(URL_SIGN_IN + '?afterSignInUrl=' + URL_PROFILE)
 })
 
 test('User can log in', async ({ context, page }) => {
@@ -63,10 +66,10 @@ test('User can log in', async ({ context, page }) => {
 	expect(cookies).not.toContain('__session')
 
 	// Go to the sign-in page with an afterSignInUrl param.
-	await page.goto(URL_SIGN_IN + '?afterSignInUrl=' + URL_ADMIN)
+	await page.goto(URL_SIGN_IN + '?afterSignInUrl=' + URL_PROFILE)
 
 	// Arrive at the admin page.
-	await page.waitForURL(URL_ADMIN)
+	await page.waitForURL(URL_PROFILE)
 	await expect(serverSecret).toContainText(SERVER_SECRET)
 
 	// Can see the user button.
