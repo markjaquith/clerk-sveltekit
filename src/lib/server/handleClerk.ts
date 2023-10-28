@@ -1,5 +1,5 @@
 import { redirect, type Handle } from '@sveltejs/kit'
-import { createClient, verifySession } from './index.js'
+import { verifySession } from './index.js'
 
 export default function handleClerk(
 	secretKey: string,
@@ -14,7 +14,6 @@ export default function handleClerk(
 	},
 ) {
 	return (async ({ event, resolve }) => {
-		createClient(secretKey)
 		const sessionToken = event.cookies.get('__session')
 
 		debug && console.log('[Clerk SvelteKit] ' + event.url.pathname)
