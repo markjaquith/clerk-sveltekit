@@ -36,7 +36,7 @@ import { CLERK_SECRET_KEY } from '$env/static/private'
 export const handle: Handle = sequence(
 	handleClerk(CLERK_SECRET_KEY, {
 		debug: true,
-		protectedPaths: ['/pages/', '/dragonfind'],
+		protectedPaths: ['/admin'],
 		signInUrl: '/sign-in',
 	}),
 )
@@ -51,8 +51,8 @@ import { initializeClerkClient } from 'clerk-sveltekit/client'
 import { clerk } from 'clerk-sveltekit/client'
 
 initializeClerkClient(PUBLIC_CLERK_PUBLISHABLE_KEY, {
-	afterSignInUrl: '/',
-	afterSignUpUrl: '/',
+	afterSignInUrl: '/admin/',
+	afterSignUpUrl: '/admin/',
 	signInUrl: '/sign-in',
 	signUpUrl: '/sign-up',
 })
@@ -75,8 +75,8 @@ Next, put the `SignIn` component on your sign in page:
 	import SignIn from 'clerk-sveltekit/client/SignIn.svelte'
 </script>
 
-<div class="h-screen flex justify-center items-center">
-	<SignIn afterSignInUrl="/" />
+<div>
+	<SignIn afterSignInUrl="/admin" />
 </div>
 ```
 
@@ -87,7 +87,7 @@ And put the `SignUp` component on your sign up page:
 	import SignUp from 'clerk-sveltekit/client/SignUp.svelte'
 </script>
 
-<div class="h-screen flex justify-center items-center">
+<div>
 	<SignUp afterSignUpUrl="/admin" />
 </div>
 ```
