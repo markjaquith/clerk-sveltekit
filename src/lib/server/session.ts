@@ -5,7 +5,7 @@ import type { RequestHandler, RequestEvent } from '@sveltejs/kit'
 
 export const verifySession = async (sessionToken: string) => {
 	if (sessionToken) {
-		const issuer = (iss: string) => iss.startsWith('https://clerk.') || iss.includes('.clerk.accounts')
+		const issuer = (issuer: string) => issuer.startsWith('https://clerk.') || issuer.includes('.clerk.accounts')
 		const claims = await verifyToken(sessionToken, {
 			secretKey: CLERK_SECRET_KEY,
 			issuer,
