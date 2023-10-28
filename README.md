@@ -47,8 +47,7 @@ Add this to `src/hooks.client.ts`:
 ```typescript
 import type { HandleClientError } from '@sveltejs/kit'
 import { PUBLIC_CLERK_PUBLISHABLE_KEY } from '$env/static/public'
-import { initializeClerkClient } from 'clerk-sveltekit/client'
-import { clerk } from 'clerk-sveltekit/client'
+import { initializeClerkClient, clerk } from 'clerk-sveltekit/client'
 
 initializeClerkClient(PUBLIC_CLERK_PUBLISHABLE_KEY, {
 	afterSignInUrl: '/admin/',
