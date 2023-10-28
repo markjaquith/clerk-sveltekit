@@ -1,6 +1,13 @@
 import { writable, type Writable } from 'svelte/store'
 import Clerk from '@clerk/clerk-js'
 import type { ClerkOptions } from '@clerk/types'
+import ClerkLoaded from './ClerkLoaded.svelte'
+import ClerkLoading from './ClerkLoading.svelte'
+import SignedIn from './SignedIn.svelte'
+import SignedOut from './SignedOut.svelte'
+import SignIn from './SignIn.svelte'
+import SignUp from './SignUp.svelte'
+import UserButton from './UserButton.svelte'
 
 // Create a writable store for Clerk.
 export const clerk: Writable<Clerk | null> = writable(null)
@@ -27,3 +34,4 @@ export async function initializeClerkClient(
 }
 
 export { clerkUI } from './clerkui.js'
+export { ClerkLoaded, ClerkLoading, SignedIn, SignedOut, SignIn, SignUp, UserButton }
