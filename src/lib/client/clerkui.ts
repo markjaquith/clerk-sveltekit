@@ -30,31 +30,31 @@ export const clerkUI = (node: HTMLDivElement, { clerk, componentType, props }: C
 	}
 
 	let currentComponentType = componentType
-	console.log(`[ClerkUI] Initial component type: ${currentComponentType}`)
+	// console.log(`[ClerkUI] Initial component type: ${currentComponentType}`)
 
 	if (clerk) {
-		console.log(`[ClerkUI] Mounting initial ${currentComponentType}`)
+		// console.log(`[ClerkUI] Mounting initial ${currentComponentType}`)
 		clerk[`mount${currentComponentType}`](node, props)
 	}
 
 	return {
 		update: ({ clerk: newClerk, componentType: newComponentType }: ClerkUIConfig) => {
-			console.log(`[ClerkUI] Update triggered. New component type: ${newComponentType}`)
+			// console.log(`[ClerkUI] Update triggered. New component type: ${newComponentType}`)
 
 			if (currentComponentType !== newComponentType || clerk !== newClerk) {
-				console.log(`[ClerkUI] Unmounting previous ${currentComponentType}`)
+				// console.log(`[ClerkUI] Unmounting previous ${currentComponentType}`)
 				clerk?.[`unmount${currentComponentType}`](node)
 				currentComponentType = newComponentType
 				clerk = newClerk
 			}
 
 			if (clerk) {
-				console.log(`[ClerkUI] Mounting updated ${currentComponentType}`)
+				// console.log(`[ClerkUI] Mounting updated ${currentComponentType}`)
 				clerk[`mount${currentComponentType}`](node, props)
 			}
 		},
 		destroy: () => {
-			console.log(`[ClerkUI] Destroy called. Unmounting ${currentComponentType}`)
+			// console.log(`[ClerkUI] Destroy called. Unmounting ${currentComponentType}`)
 			clerk?.[`unmount${currentComponentType}`](node)
 		},
 	}

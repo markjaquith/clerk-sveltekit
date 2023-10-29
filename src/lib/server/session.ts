@@ -1,7 +1,7 @@
 import { CLERK_SECRET_KEY } from '$env/static/private'
 import { verifyToken } from '@clerk/backend'
-import { json } from '@sveltejs/kit'
-import type { RequestHandler, RequestEvent } from '@sveltejs/kit'
+// import { json } from '@sveltejs/kit'
+// import type { RequestHandler, RequestEvent } from '@sveltejs/kit'
 
 export const verifySession = async (sessionToken: string) => {
 	if (sessionToken) {
@@ -17,9 +17,9 @@ export const verifySession = async (sessionToken: string) => {
 	}
 }
 
-export const requireSession = (handler: RequestHandler) => async (event: RequestEvent) => {
-	if (!event.locals.session) {
-		return json({ ok: false, error: 'Users Session not found' })
-	}
-	return handler(event)
-}
+// export const requireSession = (handler: RequestHandler) => async (event: RequestEvent) => {
+// 	if (!event.locals.session) {
+// 		return json({ ok: false, error: 'Users Session not found' })
+// 	}
+// 	return handler(event)
+// }
