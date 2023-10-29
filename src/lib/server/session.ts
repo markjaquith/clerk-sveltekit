@@ -1,20 +1,15 @@
-import { createClerkClient } from '@clerk/clerk-sdk-node'
-import { json } from '@sveltejs/kit'
-import type { RequestHandler, RequestEvent } from '@sveltejs/kit'
-
-let clerk: ReturnType<typeof createClerkClient> | null = null
-
-export function createClient(secretKey: string) {
-	clerk = createClerkClient({ secretKey })
-}
+import { CLERK_SECRET_KEY } from '$env/static/private'
+import { verifyToken } from '@clerk/backend'
+// import { json } from '@sveltejs/kit'
+// import type { RequestHandler, RequestEvent } from '@sveltejs/kit'
 
 export const verifySession = async (sessionToken: string) => {
-	if (!clerk) {
-		throw new Error('Clerk client not initialized')
-	}
-
 	if (sessionToken) {
-		const claims = await clerk.verifyToken(sessionToken)
+		const issuer = (issuer: string) => issuer.startsWith('https://clerk.') || issuer.includes('.clerk.accounts')
+		const claims = await verifyToken(sessionToken, {
+			secretKey: CLERK_SECRET_KEY,
+			issuer,
+		})
 		return {
 			userId: claims.sub,
 			claims,
@@ -22,9 +17,9 @@ export const verifySession = async (sessionToken: string) => {
 	}
 }
 
-export const requireSession = (handler: RequestHandler) => async (event: RequestEvent) => {
-	if (!event.locals.session) {
-		return json({ ok: false, error: 'Users Session not found' })
-	}
-	return handler(event)
-}
+// export const requireSession = (handler: RequestHandler) => async (event: RequestEvent) => {
+// 	if (!event.locals.session) {
+// 		return json({ ok: false, error: 'Users Session not found' })
+// 	}
+// 	return handler(event)
+// }

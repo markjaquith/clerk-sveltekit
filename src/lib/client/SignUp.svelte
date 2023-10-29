@@ -4,44 +4,71 @@
 	import { clerkUI } from './index.js'
 	import type { SignUpProps } from '@clerk/types'
 	import ClerkLoaded from './ClerkLoaded.svelte'
+	import SignedOut from './SignedOut.svelte'
+	import SignedIn from './SignedIn.svelte'
+	import Redirect from './Redirect.svelte'
 	type $$Props = SignUpProps
 
-	const RETRY_EVERY = 100
 	const CANCEL_AFTER = 5000
+	const REDIRECT_AFTER_AUTH = 'redirectAfterAuth'
+	const REDIRECT_URL = 'redirectUrl'
+	const EVENT_USER = 'clerk-sveltekit:user'
 
-	let afterSignUpUrl = $$props.afterSignUpUrl || '/'
+	let redirectUrlFromParam: string = $$props.redirectUrl || $$props.afterSignUpUrl || '/'
+	let clerkRedirectUrl = redirectUrlFromParam
 	let showForm = false
 	let timeout: ReturnType<typeof setTimeout>
+	let didAuthRedirect = false
 
 	function redirectOnceLoggedIn(url: string) {
-		if (document.cookie.includes('__session=')) {
+		const callback = () => {
+			if (didAuthRedirect) return
+			didAuthRedirect = true
+			document.removeEventListener(EVENT_USER, callback)
+			clearTimeout(timeout)
 			goto(url)
-		} else {
-			timeout = setTimeout(() => redirectOnceLoggedIn(url), RETRY_EVERY)
 		}
+
+		document.addEventListener(EVENT_USER, callback)
 	}
 
 	beforeUpdate(() => {
+		const url = new URL(window.location.toString())
+		redirectUrlFromParam = url.searchParams.get(REDIRECT_URL) ?? redirectUrlFromParam
+
 		if (!showForm) {
-			const url = new URL(window.location.toString())
-			if (url.searchParams.has('afterSignUpUrl')) {
-				redirectOnceLoggedIn(url.searchParams.get('afterSignUpUrl') ?? '/')
-				setTimeout(() => {
-					clearTimeout(timeout)
-					showForm = true
-				}, CANCEL_AFTER)
+			// Initial load, before the first render.
+
+			// If the user arrived here with a redirectUrl, override the one passed to the component.
+			const redirectUrl = url.searchParams.get(REDIRECT_URL) ?? $$props.redirectUrl
+
+			// Determine if this is a redirect from a Clerk OAuth flow.
+			if (url.searchParams.has(REDIRECT_AFTER_AUTH)) {
+				// Wait for Clerk to complete the login flow, then redirect the user.
+				redirectOnceLoggedIn(url.searchParams.get(REDIRECT_AFTER_AUTH) ?? '/')
+
+				// After a while, if Clerk hasn't completed the login flow, show the login form.
+				timeout = setTimeout(() => showForm = true, CANCEL_AFTER)
 			} else {
+				// Not a redirect from Clerk, so show the login form.
 				showForm = true
 			}
 
-			url.searchParams.set('afterSignUpUrl', afterSignUpUrl)
-			afterSignUpUrl = url.toString()
+			// Add the redirect URL as a parameter to the current URL
+			url.searchParams.delete(REDIRECT_URL)
+			url.searchParams.set(REDIRECT_AFTER_AUTH, redirectUrlFromParam)
+			clerkRedirectUrl = url.toString()
 		}
 	})
 </script>
 
 {#if showForm}
 	<ClerkLoaded let:clerk>
-		<div use:clerkUI={{ clerk, componentType: 'SignUp', props: {...$$props, afterSignUpUrl }}} />
+		<SignedIn>
+			<Redirect to={redirectUrlFromParam} />
+		</SignedIn>
+		<SignedOut>
+			<div use:clerkUI={{ clerk, componentType: 'SignUp', props: {...$$props, redirectUrl: clerkRedirectUrl, afterSignUpUrl: null }}} />
+		</SignedOut>
 	</ClerkLoaded>
 {/if}
