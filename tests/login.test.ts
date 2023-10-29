@@ -19,9 +19,9 @@ test('User starts logged out', async ({ page }) => {
 
 test('User cannot access admin if not logged in', async ({ page }) => {
 	await page.goto(URL_ADMIN)
-	await page.waitForURL(URL_SIGN_IN + '?afterSignInUrl=' + URL_ADMIN)
+	await page.waitForURL(URL_SIGN_IN + '?redirectUrl=' + URL_ADMIN)
 	await page.goto(URL_PROFILE)
-	await page.waitForURL(URL_SIGN_IN + '?afterSignInUrl=' + URL_PROFILE)
+	await page.waitForURL(URL_SIGN_IN + '?redirectUrl=' + URL_PROFILE)
 })
 
 test('User can log in', async ({ context, page }) => {
@@ -65,8 +65,8 @@ test('User can log in', async ({ context, page }) => {
 	const cookies = await context.cookies()
 	expect(cookies).not.toContain('__session')
 
-	// Go to the sign-in page with an afterSignInUrl param.
-	await page.goto(URL_SIGN_IN + '?afterSignInUrl=' + URL_PROFILE)
+	// Go to the sign-in page with a redirectAfterAuth param.
+	await page.goto(URL_SIGN_IN + '?redirectAfterAuth=' + URL_PROFILE)
 
 	// Arrive at the admin page.
 	await page.waitForURL(URL_PROFILE)
