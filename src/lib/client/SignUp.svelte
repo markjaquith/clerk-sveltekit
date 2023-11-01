@@ -1,5 +1,5 @@
 <script lang="ts">
-	import SignX from './SignX.svelte'
+	import SignX from './internal/SignX.svelte'
 	import type { SignUpProps } from '@clerk/types'
 
 	type $$Props = SignUpProps

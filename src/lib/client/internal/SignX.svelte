@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { beforeUpdate } from 'svelte'
 	import { goto } from '$app/navigation'
-	import { clerkUI } from './index.js'
+	import { clerkUI } from '../index.js'
 	import type { SignInProps, SignUpProps } from '@clerk/types'
-	import ClerkLoaded from './ClerkLoaded.svelte'
-	import SignedOut from './SignedOut.svelte'
-	import SignedIn from './SignedIn.svelte'
+	import ClerkLoaded from '../ClerkLoaded.svelte'
+	import SignedOut from '../SignedOut.svelte'
+	import SignedIn from '../SignedIn.svelte'
 	import Redirect from './Redirect.svelte'
 
 	export let x = 'in'
