@@ -25,6 +25,8 @@ PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_abcdefg123
 CLERK_SECRET_KEY=sk_test_abcdefg123
 ```
 
+The easiest way to get these values is to click "API Keys" in the Clerk dashboard, and then copy the values for Next.js, and change `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` to `PUBLIC_CLERK_PUBLISHABLE_KEY`.
+
 Add this to `src/hooks.server.ts` (or integrate this code with your existing `hooks.server.ts` file):
 
 ```typescript
@@ -46,18 +48,14 @@ Add this to `src/hooks.client.ts`:
 
 ```typescript
 import type { HandleClientError } from '@sveltejs/kit'
+import { initializeClerkClient } from './lib/client/index.js'
 import { PUBLIC_CLERK_PUBLISHABLE_KEY } from '$env/static/public'
-import { initializeClerkClient, clerk } from 'clerk-sveltekit/client'
 
 initializeClerkClient(PUBLIC_CLERK_PUBLISHABLE_KEY, {
 	afterSignInUrl: '/admin/',
 	afterSignUpUrl: '/admin/',
 	signInUrl: '/sign-in',
 	signUpUrl: '/sign-up',
-})
-
-clerk.subscribe((clerkInstance) => {
-	if (clerkInstance) window.Clerk = clerkInstance
 })
 
 export const handleError: HandleClientError = async ({ error, event }) => {
@@ -75,7 +73,7 @@ Next, put the `SignIn` component on your sign in page:
 </script>
 
 <div>
-	<SignIn afterSignInUrl="/admin" />
+	<SignIn redirectUrl="/admin" />
 </div>
 ```
 
@@ -87,7 +85,7 @@ And put the `SignUp` component on your sign up page:
 </script>
 
 <div>
-	<SignUp afterSignUpUrl="/admin" />
+	<SignUp redirectUrl="/admin" />
 </div>
 ```
 

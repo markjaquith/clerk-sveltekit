@@ -29,6 +29,10 @@ export async function initializeClerkClient(
 	})
 
 	clerk.set(instance)
+
+	clerk.subscribe((clerkInstance) => {
+		if (clerkInstance) window.Clerk = clerkInstance
+	})
 }
 
 export { clerkUI } from './clerkui.js'
