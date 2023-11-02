@@ -1,6 +1,11 @@
 import { redirect, type Handle } from '@sveltejs/kit'
 import { verifySession } from './index.js'
 
+type ClerkErrorWithReason = {
+	reason?: string
+	[key: string]: unknown
+}
+
 export default function handleClerk(
 	secretKey: string,
 	{
@@ -21,15 +26,15 @@ export default function handleClerk(
 		if (sessionToken) {
 			debug && console.log('[Clerk SvelteKit] Found session token in cookies.')
 			try {
-				const session = await verifySession(sessionToken)
+				const session = await verifySession(secretKey, sessionToken)
 				if (session) {
 					debug && console.log('[Clerk SvelteKit] Session verified successfully.')
 					event.locals.session = session
 				} else {
 					debug && console.warn('[Clerk SvelteKit] Session verification returned no session.')
 				}
-			} catch (reason) {
-				console.warn('[Clerk SvelteKit] Warning during session verification:', reason)
+			} catch (error) {
+				debug && console.log('[Clerk SvelteKit] Session verification failed.', (error as ClerkErrorWithReason)?.reason ?? error)
 			}
 		} else {
 			debug && console.log('[Clerk SvelteKit] No session token found in cookies.')

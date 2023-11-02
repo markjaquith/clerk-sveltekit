@@ -1,13 +1,11 @@
-import { CLERK_SECRET_KEY } from '$env/static/private'
-import { verifyToken } from '@clerk/backend'
-// import { json } from '@sveltejs/kit'
-// import type { RequestHandler, RequestEvent } from '@sveltejs/kit'
 
-export const verifySession = async (sessionToken: string) => {
+import { verifyToken } from '@clerk/backend'
+
+export const verifySession = async (secretKey: string, sessionToken: string) => {
 	if (sessionToken) {
 		const issuer = (issuer: string) => issuer.startsWith('https://clerk.') || issuer.includes('.clerk.accounts')
 		const claims = await verifyToken(sessionToken, {
-			secretKey: CLERK_SECRET_KEY,
+			secretKey,
 			issuer,
 		})
 		return {
@@ -16,10 +14,3 @@ export const verifySession = async (sessionToken: string) => {
 		}
 	}
 }
-
-// export const requireSession = (handler: RequestHandler) => async (event: RequestEvent) => {
-// 	if (!event.locals.session) {
-// 		return json({ ok: false, error: 'Users Session not found' })
-// 	}
-// 	return handler(event)
-// }
