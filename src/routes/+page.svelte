@@ -28,7 +28,7 @@
 	</div>
 </SignedOut>
 
-<p><b>clerk-sveltekit</b> offers server-based route protection, login flow, and the following components:</p>
+<p><b>clerk-sveltekit</b> offers server-based route protection, login flow, and the following Svelte components:</p>
 
 <ul>
 	<li><code>&lt;ClerkLoading /&gt;</code> — Wrapper that shows its contents when Clerk is still loading.</li>

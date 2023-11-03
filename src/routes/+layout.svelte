@@ -1,4 +1,5 @@
 <script lang="ts">
+	import "../app.css"
 	import UserButton from '$lib/client/UserButton.svelte'
 	import SignedIn from '$lib/client/SignedIn.svelte'
 	import SignedOut from '$lib/client/SignedOut.svelte'
