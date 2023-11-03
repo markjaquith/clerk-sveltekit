@@ -4,8 +4,6 @@
 	export let data
 </script>
 
-<h2>Admin Panel</h2>
-
 <SignedIn let:user>
 	<p>Welcome, {user?.fullName ?? 'buddy'}!</p>
 	<p>You are in the admin panel.</p>
@@ -16,3 +14,9 @@
 	</p>
 	<p>You can also view <a href="/admin/profile">your profile</a>.</p>
 </SignedIn>
+
+<style>
+	p {
+		margin: 0.5rem auto;
+	}
+</style>

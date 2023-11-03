@@ -2,15 +2,6 @@
 	import SignIn from '$lib/client/SignIn.svelte'
 </script>
 
-<div>
+<div class="flex items-center justify-center mt-16">
 	<SignIn afterSignInUrl="/admin" />
 </div>
-
-<style>
-	div {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		margin-top: 4rem;
-	}
-</style>

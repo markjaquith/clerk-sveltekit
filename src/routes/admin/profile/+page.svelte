@@ -3,8 +3,6 @@
 	export let data
 </script>
 
-<h2>Admin Panel — User Profile</h2>
-
 <SignedIn let:user>
 	<p>
 		This is your user profile.
@@ -13,5 +11,11 @@
 	<p><b>Last Name:</b> <code>{user?.lastName}</code></p>
 	<p><b>Email:</b> <code>{user?.emailAddresses[0] ?? ''}</code></p>
 
-	<footer><em data-testid="server-secret">{data.secret}</em></footer>
+	<p><em data-testid="server-secret">{data.secret}</em></p>
 </SignedIn>
+
+<style>
+	p {
+		margin: 0.5rem auto;
+	}
+</style>

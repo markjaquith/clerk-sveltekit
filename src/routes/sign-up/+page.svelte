@@ -2,15 +2,6 @@
 	import SignUp from '$lib/client/SignUp.svelte'
 </script>
 
-<div>
+<div class="flex items-center justify-center mt-16">
 	<SignUp afterSignUpUrl="/admin" />
 </div>
-
-<style>
-	div {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		margin-top: 4rem;
-	}
-</style>
