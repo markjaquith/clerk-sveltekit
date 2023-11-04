@@ -115,7 +115,7 @@ Then, where you want to show the signed in user's photo and sign out button (pro
 - `&lt;SignedIn let:user /&gt;` — Wrapper that shows its contents (and exposes the Clerk `user` object) when the user is signed in.
 - `&lt;SignedOut /&gt;` — Wrapper that shows its contents when the user is not signed in.
 - `&lt;UserButton /&gt;` — Button that shows the user’s profile photo with log out link when they are signed in.
-- `&lt;UserProfile /%gt;` — Renders the current user’s profile.
-- `&lt;SignInButton /%gt;` — Unstyled sign-in button (can do `mode="modal"` too).
-- `&lt;SignUpButton /%gt;` — Unstyled sign-up button (can do `mode="modal"` too).
-- `&lt;SignOutButton /%gt;` — Unstyled sign-out button.
+- `&lt;UserProfile /&gt;` — Renders the current user’s profile.
+- `&lt;SignInButton /&gt;` — Unstyled sign-in button (can do `mode="modal"` too).
+- `&lt;SignUpButton /&gt;` — Unstyled sign-up button (can do `mode="modal"` too).
+- `&lt;SignOutButton /&gt;` — Unstyled sign-out button.

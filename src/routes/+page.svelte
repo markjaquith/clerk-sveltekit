@@ -42,10 +42,10 @@
 	<li><code>&lt;SignedIn let:user /&gt;</code> — Wrapper that shows its contents (and exposes the Clerk <code>user</code> object) when the user is signed in.</li>
 	<li><code>&lt;SignedOut /&gt;</code> — Wrapper that shows its contents when the user is not signed in.</li>
 	<li><code>&lt;UserButton /&gt;</code> — Button that shows the user’s profile photo with log out link when they are signed in.</li>
-	<li><code>&lt;UserProfile /%gt;</code> — Renders the current user’s profile.</li>
-	<li><code>&lt;SignInButton /%gt;</code> — Unstyled sign-in button (can do `mode="modal"` too).</li>
-	<li><code>&lt;SignUpButton /%gt;</code> — Unstyled sign-up button (can do `mode="modal"` too).</li>
-	<li><code>&lt;SignOutButton /%gt;</code> — Unstyled sign-out button.</li>
+	<li><code>&lt;UserProfile /&gt;</code> — Renders the current user’s profile.</li>
+	<li><code>&lt;SignInButton /&gt;</code> — Unstyled sign-in button (can do <code>mode="modal"</code> too).</li>
+	<li><code>&lt;SignUpButton /&gt;</code> — Unstyled sign-up button (can do <code>mode="modal"</code> too).</li>
+	<li><code>&lt;SignOutButton /&gt;</code> — Unstyled sign-out button.</li>
 </ul>
 
 <style>
