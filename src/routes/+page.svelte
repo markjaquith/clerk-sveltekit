@@ -1,6 +1,8 @@
 <script lang="ts">
 	import SignedIn from '$lib/client/SignedIn.svelte'
 	import SignedOut from '$lib/client/SignedOut.svelte'
+	import SignInButton from '$lib/client/SignInButton.svelte'
+	import SignUpButton from '$lib/client/SignUpButton.svelte'
 	import Box from '../internal/Box.svelte'
 </script>
 
@@ -21,9 +23,11 @@
 			You should not be able to go to the <a href="/admin">admin panel</a> without signing in, because
 			it is defined as a protected route in <code>hooks.server.ts</code> — go ahead and try!
 		</p>
-		<ul>
-			<li><a href="/sign-in">Sign in</a></li>
-			<li><a href="/sign-up">Sign up</a></li>
+		<ul class="flex flex-row gap-2">
+			<li><SignInButton class="p-2 rounded bg-slate-300">Sign in</SignInButton></li>
+			<li><SignUpButton class="p-2 rounded bg-slate-300">Sign up</SignUpButton></li>
+			<li><SignInButton class="p-2 rounded bg-slate-300" mode="modal">Sign in (modal)</SignInButton></li>
+			<li><SignUpButton class="p-2 rounded bg-slate-300" mode="modal">Sign up (modal)</SignUpButton></li>
 		</ul>
 	</Box>
 </SignedOut>
