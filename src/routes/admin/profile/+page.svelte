@@ -1,21 +1,9 @@
 <script lang="ts">
 	import SignedIn from '$lib/client/SignedIn.svelte'
+	import UserProfile from '$lib/client/UserProfile.svelte'
 	export let data
 </script>
 
-<SignedIn let:user>
-	<p>
-		This is your user profile.
-	</p>
-	<p><b>First Name:</b> <code>{user?.firstName}</code></p>
-	<p><b>Last Name:</b> <code>{user?.lastName}</code></p>
-	<p><b>Email:</b> <code>{user?.emailAddresses[0] ?? ''}</code></p>
+<UserProfile />
 
-	<p><em data-testid="server-secret">{data.secret}</em></p>
-</SignedIn>
-
-<style>
-	p {
-		margin: 0.5rem auto;
-	}
-</style>
+<p class="mt-8 text-center text-gray-400"><em data-testid="server-secret">{data.secret}</em></p>
