@@ -1,9 +1,16 @@
-import type { Clerk, SignInProps, SignUpProps, UserButtonProps } from '@clerk/types'
+import type {
+	Clerk,
+	SignInProps,
+	SignUpProps,
+	UserButtonProps,
+	UserProfileProps,
+} from '@clerk/types'
 
 type ComponentPropsMap = {
 	SignIn: SignInProps
 	SignUp: SignUpProps
 	UserButton: UserButtonProps
+	UserProfile: UserProfileProps
 }
 
 const COMPONENT_DEFAULTS: {
@@ -16,6 +23,7 @@ const COMPONENT_DEFAULTS: {
 		afterSignOutUrl: '/sign-in',
 		userProfileMode: 'modal',
 	},
+	UserProfile: {},
 } as const
 
 type ClerkUIConfig<T extends keyof ComponentPropsMap = keyof ComponentPropsMap> = {
