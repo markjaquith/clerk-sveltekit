@@ -1,10 +1,14 @@
-import { redirect, type Handle } from '@sveltejs/kit'
+import { redirect, type Handle, type RequestEvent } from '@sveltejs/kit'
 import { verifySession } from './index.js'
 
 type ClerkErrorWithReason = {
 	reason?: string
 	[key: string]: unknown
 }
+
+type ProtectedPath =
+	| string
+	| ((event: RequestEvent<Partial<Record<string, string>>, string | null>) => boolean)
 
 export default function handleClerk(
 	secretKey: string,
@@ -14,9 +18,9 @@ export default function handleClerk(
 		signInUrl = '/sign-in',
 	}: {
 		debug?: boolean
-		protectedPaths?: string[]
+		protectedPaths?: ProtectedPath[]
 		signInUrl?: string
-	},
+	}
 ) {
 	return (async ({ event, resolve }) => {
 		const sessionToken = event.cookies.get('__session')
@@ -34,7 +38,11 @@ export default function handleClerk(
 					debug && console.warn('[Clerk SvelteKit] Session verification returned no session.')
 				}
 			} catch (error) {
-				debug && console.log('[Clerk SvelteKit] Session verification failed.', (error as ClerkErrorWithReason)?.reason ?? error)
+				debug &&
+					console.log(
+						'[Clerk SvelteKit] Session verification failed.',
+						(error as ClerkErrorWithReason)?.reason ?? error
+					)
 			}
 		} else {
 			debug && console.log('[Clerk SvelteKit] No session token found in cookies.')
@@ -43,7 +51,9 @@ export default function handleClerk(
 		// Protect the protected routes.
 		if (
 			!event.locals.session &&
-			protectedPaths.find((path) => event.url.pathname.startsWith(path))
+			protectedPaths.find((path) =>
+				typeof path === 'string' ? event.url.pathname.startsWith(path) : path(event)
+			)
 		) {
 			debug && console.log('[Clerk SvelteKit] No session found, redirecting to login screen.')
 			throw redirect(303, signInUrl + '?redirectUrl=' + event.url.pathname)

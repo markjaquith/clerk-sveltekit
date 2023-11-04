@@ -5,14 +5,14 @@ const CODE = '424242'
 const URL_SIGN_IN = '/sign-in'
 const URL_ADMIN = '/admin'
 const URL_PROFILE = '/admin/profile'
+const URL_PROTECTED_ROUTE = '/some/random/protected-route/foo'
 const URL_ROOT = '/'
 const SERVER_SECRET = 'SvelteKit is awesome'
 
 test('User starts logged out', async ({ page }) => {
-	test.slow()
 	await page.goto('/')
 	const signIn = page.getByTestId('sign-in')
-	await expect(signIn).toBeVisible()
+	await expect(signIn).toBeVisible({ timeout: 30_000 })
 })
 
 test('User cannot access admin if not logged in', async ({ page }) => {
@@ -20,6 +20,11 @@ test('User cannot access admin if not logged in', async ({ page }) => {
 	await page.waitForURL(URL_SIGN_IN + '?redirectUrl=' + URL_ADMIN)
 	await page.goto(URL_PROFILE)
 	await page.waitForURL(URL_SIGN_IN + '?redirectUrl=' + URL_PROFILE)
+})
+
+test('User cannot access function-based protected route if not logged in', async ({ page }) => {
+	await page.goto(URL_PROTECTED_ROUTE)
+	await page.waitForURL(URL_SIGN_IN + '?redirectUrl=' + URL_PROTECTED_ROUTE)
 })
 
 test('User can log in', async ({ context, page }) => {
