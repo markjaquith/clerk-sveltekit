@@ -114,7 +114,7 @@
     "@changesets/cli": "^2.26.2",
     "@clerk/types": "^3.55.0",
     "@playwright/test": "^1.38.1",
-    "@sveltejs/adapter-auto": "^2.1.0",
+    "@sveltejs/adapter-cloudflare": "^2.3.3",
     "@sveltejs/kit": "^1.25.1",
     "@sveltejs/package": "^2.2.2",
     "@typescript-eslint/eslint-plugin": "^6.7.4",
