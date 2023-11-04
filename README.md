@@ -40,7 +40,7 @@ export const handle: Handle = sequence(
 		debug: true,
 		protectedPaths: ['/admin'],
 		signInUrl: '/sign-in',
-	}),
+	})
 )
 ```
 
@@ -48,7 +48,7 @@ Add this to `src/hooks.client.ts`:
 
 ```typescript
 import type { HandleClientError } from '@sveltejs/kit'
-import { initializeClerkClient } from 'clerk-sveltekit';
+import { initializeClerkClient } from 'clerk-sveltekit'
 import { PUBLIC_CLERK_PUBLISHABLE_KEY } from '$env/static/public'
 
 initializeClerkClient(PUBLIC_CLERK_PUBLISHABLE_KEY, {
@@ -105,3 +105,17 @@ Then, where you want to show the signed in user's photo and sign out button (pro
 	<a href="/sign-in">Sign in</a> <span>|</span> <a href="/sign-up">Sign up</a>
 </SignedOut>
 ```
+
+### Components
+
+- `&lt;ClerkLoading /&gt;` — Wrapper that shows its contents when Clerk is still loading.
+- `&lt;ClerkLoaded let:clerk /&gt;` — Wrapper that shows its contents (and exposes the `clerk` object) when Clerk is done loading.
+- `&lt;SignIn /&gt;` — Renders a sign-in form.
+- `&lt;SignUp /&gt;` — Renders a sign-up form.
+- `&lt;SignedIn let:user /&gt;` — Wrapper that shows its contents (and exposes the Clerk `user` object) when the user is signed in.
+- `&lt;SignedOut /&gt;` — Wrapper that shows its contents when the user is not signed in.
+- `&lt;UserButton /&gt;` — Button that shows the user’s profile photo with log out link when they are signed in.
+- `&lt;UserProfile /%gt;` — Renders the current user’s profile.
+- `&lt;SignInButton /%gt;` — Unstyled sign-in button (can do `mode="modal"` too).
+- `&lt;SignUpButton /%gt;` — Unstyled sign-up button (can do `mode="modal"` too).
+- `&lt;SignOutButton /%gt;` — Unstyled sign-out button.

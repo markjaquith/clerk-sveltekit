@@ -57,6 +57,22 @@
     "./client/UserButton.svelte": {
       "types": "./dist/client/UserButton.svelte.d.ts",
       "svelte": "./dist/client/UserButton.svelte"
+    },
+    "./client/UserProfile.svelte": {
+      "types": "./dist/client/UserProfile.svelte.d.ts",
+      "svelte": "./dist/client/UserProfile.svelte"
+    },
+    "./client/SignInButton.svelte": {
+      "types": "./dist/client/SignInButton.svelte.d.ts",
+      "svelte": "./dist/client/SignInButton.svelte"
+    },
+    "./client/SignUpButton.svelte": {
+      "types": "./dist/client/SignUpButton.svelte.d.ts",
+      "svelte": "./dist/client/SignUpButton.svelte"
+    },
+    "./client/SignOutButton.svelte": {
+      "types": "./dist/client/SignOutButton.svelte.d.ts",
+      "svelte": "./dist/client/SignOutButton.svelte"
     }
   },
   "typesVersions": {
@@ -90,6 +106,18 @@
       ],
       "client/UserButton.svelte": [
         "./dist/client/UserButton.svelte.d.ts"
+      ],
+      "client/UserProfile.svelte": [
+        "./dist/client/UserProfile.svelte.d.ts"
+      ],
+      "client/SignInButton.svelte": [
+        "./dist/client/SignInButton.svelte.d.ts"
+      ],
+      "client/SignUpButton.svelte": [
+        "./dist/client/SignUpButton.svelte.d.ts"
+      ],
+      "client/SignOutButton.svelte": [
+        "./dist/client/SignOutButton.svelte.d.ts"
       ]
     }
   },
