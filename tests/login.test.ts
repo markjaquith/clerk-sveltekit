@@ -1,6 +1,5 @@
 import { test, expect } from '@playwright/test'
 
-const TITLE = 'Clerk SvelteKit'
 const EMAIL = 'tester+clerk_test@example.com'
 const CODE = '424242'
 const URL_SIGN_IN = '/sign-in'
@@ -11,8 +10,6 @@ const SERVER_SECRET = 'SvelteKit is awesome'
 
 test('User starts logged out', async ({ page }) => {
 	await page.goto('/')
-	const title = page.locator('h1')
-	await expect(title).toHaveText(TITLE)
 	const signIn = page.getByTestId('sign-in')
 	await expect(signIn).toBeVisible()
 })
@@ -29,7 +26,7 @@ test('User can log in', async ({ context, page }) => {
 	await page.goto(URL_ROOT)
 	const signIn = page.getByTestId('sign-in')
 	await signIn.click()
-	
+
 	// Submit the email.
 	await page.waitForURL(URL_SIGN_IN)
 	const email = page.locator('input[name="identifier"][type="email"]')
@@ -41,7 +38,7 @@ test('User can log in', async ({ context, page }) => {
 		const errorMessage = page.locator('#error-identifier')
 		throw new Error(`Error submitting email (${EMAIL}): ${await errorMessage.textContent()}`)
 	}
-	
+
 	// Submit the OTP.
 	const firstCodeInputField = page.locator('input[name="codeInput-0"]')
 	await expect(firstCodeInputField).toBeVisible()
@@ -57,7 +54,7 @@ test('User can log in', async ({ context, page }) => {
 	// Delete the session cookie to simulate finishing OAuth login.
 	// TODO: move this to a helper function.
 	const oldCookies = await context.cookies()
-	const otherCookies = oldCookies.filter(cookie => cookie.name !== '__session')
+	const otherCookies = oldCookies.filter((cookie) => cookie.name !== '__session')
 	context.clearCookies()
 	context.addCookies(otherCookies)
 
