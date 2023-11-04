@@ -5,7 +5,11 @@
 	import SignedOut from '$lib/client/SignedOut.svelte'
 	import Wrap from '../internal/Wrap.svelte'
 	import { page } from '$app/stores'
-	$: path = $page.url.pathname
+	import { onMount } from 'svelte'
+
+	let mounted = false
+	onMount(() => mounted = true)
+	$: path = mounted ? $page.url.pathname : '/'
 </script>
 
 <header class="flex gap-8 p-4 items-top">
