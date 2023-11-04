@@ -1,5 +1,13 @@
 # clerk-sveltekit
 
+## 0.1.5
+
+### Patch Changes
+
+- 7d4973f: Allow functions (which accept an event and return boolean) to be passed to `protectedRoutes`
+- 24fcbe9: Added `<SignUpButton>`, `<SignInButton>` and `<SignOutButton>` components
+- 2967343: Added `<UserProfile />` component
+
 ## 0.1.4
 
 ### Patch Changes
