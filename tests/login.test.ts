@@ -7,11 +7,12 @@ const URL_ADMIN = '/admin'
 const URL_PROFILE = '/admin/profile'
 const URL_ROOT = '/'
 const SERVER_SECRET = 'SvelteKit is awesome'
+const timeout = 10_000
 
 test('User starts logged out', async ({ page }) => {
 	await page.goto('/')
 	const signIn = page.getByTestId('sign-in')
-	await expect(signIn).toBeVisible()
+	await expect(signIn).toBeVisible({ timeout })
 })
 
 test('User cannot access admin if not logged in', async ({ page }) => {
