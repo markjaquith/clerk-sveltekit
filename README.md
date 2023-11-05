@@ -63,7 +63,7 @@ export const handleError: HandleClientError = async ({ error, event }) => {
 }
 ```
 
-Customize the protected paths, and various URLs.
+Customize the protected paths, and the various URLs.
 
 Next, put the `SignIn` component on your sign in page:
 
@@ -103,10 +103,13 @@ Then, where you want to show the signed in user's photo and sign out button (pro
 </SignedIn>
 <SignedOut>
 	<a href="/sign-in">Sign in</a> <span>|</span> <a href="/sign-up">Sign up</a>
+	<!-- You could also use <SignInButton mode="modal" /> and <SignUpButton mode="modal" /> here -->
 </SignedOut>
 ```
 
 ### Components
+
+All components can be imported from `clerk-sveltekit/client/ComponentName.svelte`
 
 - `&lt;ClerkLoading /&gt;` — Wrapper that shows its contents when Clerk is still loading.
 - `&lt;ClerkLoaded let:clerk /&gt;` — Wrapper that shows its contents (and exposes the `clerk` object) when Clerk is done loading.
@@ -119,3 +122,13 @@ Then, where you want to show the signed in user's photo and sign out button (pro
 - `&lt;SignInButton /&gt;` — Unstyled sign-in button (can do `mode="modal"` too).
 - `&lt;SignUpButton /&gt;` — Unstyled sign-up button (can do `mode="modal"` too).
 - `&lt;SignOutButton /&gt;` — Unstyled sign-out button.
+
+Note that components should be used for displaying UI, but are not sufficient for protecting routes. To protect a route, use the `protectedRoutes` option passed to `handleClerk()` in your `hooks.server.ts` file.
+
+### Protected Routes
+
+The `protectedRoutes` option will accept an array of either strings, or functions which accept a SvelteKit event object and return a boolean. When passed strings, any route that _starts_ with that string will be protected. i.e. protecting `'/admin'` will protect `/admin` but also `/admin/foo`.
+
+### Thanks
+
+Thanks to Cerbos for their [https://github.com/cerbos/sveltekit-clerk-cerbos](sveltekit-clerk-cerbos) example repo which got this project started, and to [Brian Bug](https://thebrianbug.com/) for fixing bugs in that implementation.
