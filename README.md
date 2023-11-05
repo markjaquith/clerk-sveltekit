@@ -111,17 +111,17 @@ Then, where you want to show the signed in user's photo and sign out button (pro
 
 All components can be imported from `clerk-sveltekit/client/ComponentName.svelte`
 
-- `&lt;ClerkLoading /&gt;` — Wrapper that shows its contents when Clerk is still loading.
-- `&lt;ClerkLoaded let:clerk /&gt;` — Wrapper that shows its contents (and exposes the `clerk` object) when Clerk is done loading.
-- `&lt;SignIn /&gt;` — Renders a sign-in form.
-- `&lt;SignUp /&gt;` — Renders a sign-up form.
-- `&lt;SignedIn let:user /&gt;` — Wrapper that shows its contents (and exposes the Clerk `user` object) when the user is signed in.
-- `&lt;SignedOut /&gt;` — Wrapper that shows its contents when the user is not signed in.
-- `&lt;UserButton /&gt;` — Button that shows the user’s profile photo with log out link when they are signed in.
-- `&lt;UserProfile /&gt;` — Renders the current user’s profile.
-- `&lt;SignInButton /&gt;` — Unstyled sign-in button (can do `mode="modal"` too).
-- `&lt;SignUpButton /&gt;` — Unstyled sign-up button (can do `mode="modal"` too).
-- `&lt;SignOutButton /&gt;` — Unstyled sign-out button.
+- `<ClerkLoading />` — Wrapper that shows its contents when Clerk is still loading.
+- `<ClerkLoaded let:clerk />` — Wrapper that shows its contents (and exposes the `clerk` object) when Clerk is done loading.
+- `<SignIn />` — Renders a sign-in form.
+- `<SignUp />` — Renders a sign-up form.
+- `<SignedIn let:user />` — Wrapper that shows its contents (and exposes the Clerk `user` object) when the user is signed in.
+- `<SignedOut />` — Wrapper that shows its contents when the user is not signed in.
+- `<UserButton />` — Button that shows the user’s profile photo with log out link when they are signed in.
+- `<UserProfile />` — Renders the current user’s profile.
+- `<SignInButton />` — Unstyled sign-in button (can do `mode="modal"` too).
+- `<SignUpButton />` — Unstyled sign-up button (can do `mode="modal"` too).
+- `<SignOutButton />` — Unstyled sign-out button.
 
 Note that components should be used for displaying UI, but are not sufficient for protecting routes. To protect a route, use the `protectedRoutes` option passed to `handleClerk()` in your `hooks.server.ts` file.
 
