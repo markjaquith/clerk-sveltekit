@@ -1,4 +1,4 @@
-import { redirect, type Handle, type RequestEvent } from '@sveltejs/kit'
+import type { Handle, RequestEvent } from '@sveltejs/kit'
 import { verifySession } from './index.js'
 
 type ClerkErrorWithReason = {
@@ -56,7 +56,7 @@ export default function handleClerk(
 			)
 		) {
 			debug && console.log('[Clerk SvelteKit] No session found, redirecting to login screen.')
-			throw redirect(303, signInUrl + '?redirectUrl=' + event.url.pathname)
+			return Response.redirect(event.url.origin + signInUrl + '?redirectUrl=' + event.url.pathname)
 		}
 
 		return resolve(event)
