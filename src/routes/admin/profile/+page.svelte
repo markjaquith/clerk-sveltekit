@@ -4,6 +4,8 @@
 	export let data
 </script>
 
-<UserProfile />
+<div class="flex justify-center">
+	<UserProfile />
+</div>
 
 <p class="mt-8 text-center text-gray-400"><em data-testid="server-secret">{data.secret}</em></p>
