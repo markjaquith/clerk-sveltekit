@@ -1,5 +1,11 @@
 # clerk-sveltekit
 
+## 0.2.0
+
+### Minor Changes
+
+- 2e37e7d: Fix protected route redirection
+
 ## 0.1.6
 
 ### Patch Changes
