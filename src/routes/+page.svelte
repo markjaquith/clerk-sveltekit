@@ -23,16 +23,18 @@
 			You should not be able to go to the <a href="/admin">admin panel</a> without signing in, because
 			it is defined as a protected route in <code>hooks.server.ts</code> — go ahead and try!
 		</p>
-		<ul class="flex flex-row gap-2">
+		<ul class="flex flex-row flex-wrap justify-center gap-2 my-4 whitespace-nowrap">
 			<li><SignInButton class="p-2 rounded bg-slate-300">Sign in</SignInButton></li>
 			<li><SignUpButton class="p-2 rounded bg-slate-300">Sign up</SignUpButton></li>
+			</ul>
+		<ul class="flex flex-row flex-wrap justify-center gap-2 whitespace-nowrap">
 			<li><SignInButton class="p-2 rounded bg-slate-300" mode="modal">Sign in (modal)</SignInButton></li>
 			<li><SignUpButton class="p-2 rounded bg-slate-300" mode="modal">Sign up (modal)</SignUpButton></li>
 		</ul>
 	</Box>
 </SignedOut>
 
-<p><b>clerk-sveltekit</b> offers server-based route protection, login flow, and the following Svelte components:</p>
+<p>The package offers server-based route protection, login flow, and the following Svelte components:</p>
 
 <ul class="[&_code]:bg-yellow-50 [&_code]:p-1 [&_code]:font-bold list-disc list-outside pl-6 pt-8">
 	<li><code>&lt;ClerkLoading /&gt;</code> — Wrapper that shows its contents when Clerk is still loading.</li>
