@@ -1,5 +1,4 @@
 <script lang="ts">
-	import SignedIn from '$lib/client/SignedIn.svelte'
 	import UserProfile from '$lib/client/UserProfile.svelte'
 	export let data
 </script>
