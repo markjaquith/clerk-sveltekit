@@ -4,6 +4,8 @@ Adapter for using [Clerk](https://clerk.com/) authentication in [SvelteKit](http
 
 [Demo](https://clerk-sveltekit.markjaquith.com/)
 
+The demo site is just this repository, hosted on Cloudflare Pages.
+
 ## Installation
 
 ### Install package
