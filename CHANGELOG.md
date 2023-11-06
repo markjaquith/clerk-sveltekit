@@ -1,5 +1,11 @@
 # clerk-sveltekit
 
+## 0.1.6
+
+### Patch Changes
+
+- 92e5ec8: Refreshed demo site
+
 ## 0.1.5
 
 ### Patch Changes
