@@ -24,3 +24,11 @@ jobs:
         run: bun run test:unit
       - name: E2E Tests
         run: bun run test:e2e
+      - name: Update status
+        uses: Sibz/github-status-action@v1
+        with:
+          authToken: ${{secrets.GITHUB_TOKEN}}
+          context: 'Test run'
+          description: 'Passed'
+          state: 'success'
+          sha: ${{github.event.pull_request.head.sha || github.sha}}
