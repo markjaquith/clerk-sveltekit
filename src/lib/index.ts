@@ -1,1 +1,1 @@
-export { clerkUI, initializeClerkClient } from './client/index.js'
+export { clerkUI } from './client/clerkui.js'

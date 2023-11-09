@@ -1,6 +1,6 @@
-import Clerk from '@clerk/clerk-js'
-import clerk from './store.js'
-import _initializeClerkClient, { DEFAULT_OPTIONS } from './initializeClerkClient.js'
+import Clerk from '@clerk/clerk-js/headless'
+import clerk from '../client/store.js'
+import _initializeClerkClient, { DEFAULT_OPTIONS } from '../client/initializeClerkClient.js'
 
 type Params = Parameters<typeof _initializeClerkClient>
 
@@ -11,4 +11,4 @@ export async function initializeClerkClient(
 	return _initializeClerkClient(clerk, Clerk, key, options)
 }
 
-export { clerkUI } from './clerkui.js'
+export { clerkUI } from '../client/clerkui.js'

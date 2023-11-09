@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { beforeUpdate } from 'svelte'
 	import { goto } from '$app/navigation'
-	import { clerkUI } from '../index.js'
+	import { clerkUI } from '../clerkui.js'
 	import type { SignInProps, SignUpProps } from '@clerk/types'
 	import ClerkLoaded from '../ClerkLoaded.svelte'
 	import SignedOut from '../SignedOut.svelte'

@@ -56,7 +56,8 @@ export default function handleClerk(
 			)
 		) {
 			debug && console.log('[Clerk SvelteKit] No session found, redirecting to login screen.')
-			return Response.redirect(event.url.origin + signInUrl + '?redirectUrl=' + event.url.pathname)
+			const fullSignInUrl = new URL(signInUrl, event.url.origin)
+			return Response.redirect(fullSignInUrl.toString() + '?redirectUrl=' + event.url.pathname)
 		}
 
 		return resolve(event)
