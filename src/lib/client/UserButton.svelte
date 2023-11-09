@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { clerk, clerkUI } from './index.js'
+	import clerkUI from './clerkui.js'
+	import clerk from './store.js'
 	import type { UserButtonProps } from '@clerk/types'
 	type $$Props = UserButtonProps
 </script>

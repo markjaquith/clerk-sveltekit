@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { clerk } from '../client/index.js'
+	import clerk from '../client/store.js'
 	import type { HTMLButtonAttributes } from 'svelte/elements'
 
 	export let afterSignInUrl: string | undefined = undefined
