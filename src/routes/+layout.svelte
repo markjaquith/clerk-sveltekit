@@ -6,6 +6,7 @@
   import '@svelteness/kit-docs/client/styles/fonts.css'
   import '@svelteness/kit-docs/client/styles/theme.css'
   import '@svelteness/kit-docs/client/styles/vars.css'
+	import '$internal/overrides.css'
 
   import { KitDocs, KitDocsLayout, type NavbarConfig, createSidebarContext } from '@svelteness/kit-docs'
 

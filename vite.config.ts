@@ -8,6 +8,7 @@ export default defineConfig({
 	resolve: {
 		alias: {
 			$fonts: resolve(process.cwd(), 'src/internal/fonts'),
+			$internal: resolve(process.cwd(), 'src/internal'),
 		},
 	},
 	plugins: [

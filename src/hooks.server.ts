@@ -5,7 +5,7 @@ import { CLERK_SECRET_KEY } from '$env/static/private'
 
 export const handle: Handle = sequence(
 	handleClerk(CLERK_SECRET_KEY, {
-		debug: true,
+		// debug: true,
 		protectedPaths: ['/admin', ({ url }) => new URL(url).pathname.includes('protected-route')],
 		signInUrl: '/sign-in',
 	})
