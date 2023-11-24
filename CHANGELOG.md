@@ -1,5 +1,12 @@
 # clerk-sveltekit
 
+## 0.3.0
+
+### Minor Changes
+
+- c1eaf3f: Added the three organization components
+- d3d1aa6: Add a headless mode for slimmer builds that do not need Clerk components
+
 ## 0.2.0
 
 ### Minor Changes
