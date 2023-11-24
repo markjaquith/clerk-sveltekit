@@ -82,6 +82,9 @@ export const handleError: HandleClientError = async ({ error, event }) => {
 
 Customize the protected paths, and the various URLs as you like.
 
+> [!NOTE]
+> If you use `clerk-sveltekit/headless` instead of `clerk-sveltekit/client`, your bundle will be much smaller (by about 1MB), but you will not have access to `<SignIn />`, `<SignUp />`, `<UserProfile />`, `<UserButton />`, `<OrganizationProfile />`, `<OrganizationSwitcher />`, or `<CreateOrganization />`. Sign-ins will have to happen on your `accounts.{TLD}` subdomain.
+
 ### Use the components
 
 Next, put the `SignIn` component on your sign in page:
