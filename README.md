@@ -141,6 +141,9 @@ All components can be imported from `clerk-sveltekit/client/ComponentName.svelte
 - `<SignInButton />` — Unstyled sign-in button (can do `mode="modal"` too).
 - `<SignUpButton />` — Unstyled sign-up button (can do `mode="modal"` too).
 - `<SignOutButton />` — Unstyled sign-out button.
+- `<OrganizationProfile />` — Renders the organization profile component.
+- `<OrganizationSwitcher />` — Renders an organization switcher component.
+- `<CreateOrganization />` — Renders UI for creating an organization.
 
 Note that components should be used for displaying UI, but are not sufficient for protecting routes. To protect a route, use the `protectedRoutes` option passed to `handleClerk()` in your `hooks.server.ts` file.
 

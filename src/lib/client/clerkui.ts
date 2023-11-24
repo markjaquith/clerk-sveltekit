@@ -4,6 +4,9 @@ import type {
 	SignUpProps,
 	UserButtonProps,
 	UserProfileProps,
+	OrganizationProfileProps,
+	OrganizationSwitcherProps,
+	CreateOrganizationProps,
 } from '@clerk/types'
 
 type ComponentPropsMap = {
@@ -11,6 +14,9 @@ type ComponentPropsMap = {
 	SignUp: SignUpProps
 	UserButton: UserButtonProps
 	UserProfile: UserProfileProps
+	OrganizationProfile: OrganizationProfileProps
+	OrganizationSwitcher: OrganizationSwitcherProps
+	CreateOrganization: CreateOrganizationProps
 }
 
 const COMPONENT_DEFAULTS: {
@@ -24,6 +30,9 @@ const COMPONENT_DEFAULTS: {
 		userProfileMode: 'modal',
 	},
 	UserProfile: {},
+	OrganizationProfile: {},
+	OrganizationSwitcher: {},
+	CreateOrganization: {},
 } as const
 
 type ClerkUIConfig<T extends keyof ComponentPropsMap = keyof ComponentPropsMap> = {
