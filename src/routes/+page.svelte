@@ -48,6 +48,9 @@
 	<li><code>&lt;SignInButton /&gt;</code> — Unstyled sign-in button (can do <code>mode="modal"</code> too).</li>
 	<li><code>&lt;SignUpButton /&gt;</code> — Unstyled sign-up button (can do <code>mode="modal"</code> too).</li>
 	<li><code>&lt;SignOutButton /&gt;</code> — Unstyled sign-out button.</li>
+	<li><code>&lt;OrganizationProfile /&gt;</code> — Renders the organization profile component.</li>
+	<li><code>&lt;OrganizationSwitcher /&gt;</code> — Renders an organization switcher component.</li>
+	<li><code>&lt;CreateOrganization /&gt;</code> — Renders UI for creating an organization.</li>
 </ul>
 
 <style>
