@@ -1,5 +1,6 @@
 <script lang="ts">
 	import '../app.css'
+	import OrganizationSwitcher from '$lib/client/OrganizationSwitcher.svelte'
 	import UserButton from '$lib/client/UserButton.svelte'
 	import SignedIn from '$lib/client/SignedIn.svelte'
 	import SignedOut from '$lib/client/SignedOut.svelte'
@@ -29,6 +30,9 @@
 	</div>
 	<div class="flex gap-4 ml-auto">
 		<SignedIn>
+			<div data-testid="organization-switcher">
+				<OrganizationSwitcher />
+			</div>
 			<div data-testid="user-button">
 				<UserButton afterSignOutUrl="/" />
 			</div>
