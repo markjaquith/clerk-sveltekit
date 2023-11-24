@@ -77,6 +77,18 @@
     "./client/SignOutButton.svelte": {
       "types": "./dist/client/SignOutButton.svelte.d.ts",
       "svelte": "./dist/client/SignOutButton.svelte"
+    },
+    "./client/OrganizationProfile.svelte": {
+      "types": "./dist/client/OrganizationProfile.svelte.d.ts",
+      "svelte": "./dist/client/OrganizationProfile.svelte"
+    },
+    "./client/OrganizationSwitcher.svelte": {
+      "types": "./dist/client/OrganizationSwitcher.svelte.d.ts",
+      "svelte": "./dist/client/OrganizationSwitcher.svelte"
+    },
+    "./client/CreateOrganization.svelte": {
+      "types": "./dist/client/CreateOrganization.svelte.d.ts",
+      "svelte": "./dist/client/CreateOrganization.svelte"
     }
   },
   "typesVersions": {
@@ -125,6 +137,15 @@
       ],
       "client/SignOutButton.svelte": [
         "./dist/client/SignOutButton.svelte.d.ts"
+      ],
+      "client/OrganizationProfile.svelte": [
+        "./dist/client/OrganizationProfile.svelte.d.ts"
+      ],
+      "client/OrganizationSwitcher.svelte": [
+        "./dist/client/OrganizationSwitcher.svelte.d.ts"
+      ],
+      "client/CreateOrganization.svelte": [
+        "./dist/client/CreateOrganization.svelte.d.ts"
       ]
     }
   },
