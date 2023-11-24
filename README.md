@@ -151,6 +151,10 @@ Note that components should be used for displaying UI, but are not sufficient fo
 
 The `protectedRoutes` option will accept an array of either strings, or functions which accept a SvelteKit event object and return a boolean. When passed strings, any route that _starts_ with that string will be protected. i.e. protecting `'/admin'` will protect `/admin` but also `/admin/foo`.
 
+## Using Clerk data on the server
+
+Server-side protected routes will automatically get a [Clerk user object](https://clerk.com/docs/references/javascript/user/user) injected into `locals.session` which means you can use it [in a `load()` function](https://kit.svelte.dev/docs/form-actions#loading-data), a [default action](https://kit.svelte.dev/docs/form-actions#default-actions), or a [form action](https://kit.svelte.dev/docs/form-actions).
+
 ## Thanks
 
 Thanks to Cerbos for their [https://github.com/cerbos/sveltekit-clerk-cerbos](sveltekit-clerk-cerbos) example repo which got this project started, and to [Brian Bug](https://thebrianbug.com/) for fixing bugs in that implementation.
