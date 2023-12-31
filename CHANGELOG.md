@@ -4,55 +4,25 @@
 
 ### Minor Changes
 
-- c1eaf3f: Added the three organization components
-- d3d1aa6: Add a headless mode for slimmer builds that do not need Clerk components
+- Added the three organization components ([c5f666c](https://github.com/markjaquith/clerk-sveltekit/commit/c5f666cb80a3418ffac293226c23cdf9c387c0cd)
+- Added a headless mode for slimmer builds that do not need Clerk components ([d3d1aa6](https://github.com/markjaquith/clerk-sveltekit/commit/d3d1aa64319ea71beef88b9162e4653ef4060dae))
 
 ## 0.2.0
 
 ### Minor Changes
 
-- 2e37e7d: Fix protected route redirection
+- Fixed protected route redirection ([80cf99c](https://github.com/markjaquith/clerk-sveltekit/commit/80cf99c1d09f402ec9ed4d918bc8868a8b867846))
 
 ## 0.1.6
 
 ### Patch Changes
 
-- 92e5ec8: Refreshed demo site
+- Refreshed demo site
 
 ## 0.1.5
 
 ### Patch Changes
 
-- 7d4973f: Allow functions (which accept an event and return boolean) to be passed to `protectedRoutes`
-- 24fcbe9: Added `<SignUpButton>`, `<SignInButton>` and `<SignOutButton>` components
-- 2967343: Added `<UserProfile />` component
-
-## 0.1.4
-
-### Patch Changes
-
-- cf5056c: Made the OAuth flow more reliable
-- 8ffa048: Added .env.example
-- 9e5f800: If the server rejects your route due to not being signed in, you will not get an afterSignInUrl added to the URL so that you end up in your original location after signing in.
-- cf5056c: Added support for ?redirectUrl
-
-## 0.1.3
-
-### Patch Changes
-
-- c775aae: Improved documentation and tests
-
-## 0.1.2
-
-### Patch Changes
-
-- ff45ec6: Remove debug code for default redirects
-- 2e3e0b6: Fix the release process
-
-## 0.1.1
-
-### Patch Changes
-
-- 6089dad: Scaffold the structure
-- 8c02e14: Moved secret key to first argument of handleClerk()
-- 98d162d: Handle afterSignInUrl and afterSignUpUrl for OAuth flows
+- Allow functions (which accept an event and return boolean) to be passed to `protectedRoutes` ([abdd00b](https://github.com/markjaquith/clerk-sveltekit/commit/abdd00b32460e9be3640fae157484163adeb4d07))
+- Added `<SignUpButton>`, `<SignInButton>` and `<SignOutButton>` components ([6c56c17](https://github.com/markjaquith/clerk-sveltekit/commit/6c56c17f229b19006e71ca2c69d17c35b01f354e))
+- Added `<UserProfile />` component ([f9f4b30](https://github.com/markjaquith/clerk-sveltekit/commit/f9f4b303fa2fc7ffd81a93219c3ca3b5457a8ea3))
