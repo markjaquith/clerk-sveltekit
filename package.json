@@ -150,7 +150,7 @@
     }
   },
   "name": "clerk-sveltekit",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Adapter to use Clerk with SvelteKit",
   "svelte": "./dist/index.js",
   "types": "./dist/index.d.ts",
