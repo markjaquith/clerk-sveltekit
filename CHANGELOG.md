@@ -1,5 +1,11 @@
 # clerk-sveltekit
 
+## 0.4.0
+
+### Minor Changes
+
+- Added support for SvelteKit 2 ([`ec2a11d`](https://github.com/markjaquith/clerk-sveltekit/commit/ec2a11d136693c2c0f4a256e65ec070d91018ff8))
+
 ## 0.3.0
 
 ### Minor Changes
