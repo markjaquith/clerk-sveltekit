@@ -163,7 +163,7 @@
   "license": "MIT",
   "peerDependencies": {
     "svelte": "^4.0.0",
-    "@sveltejs/kit": "^1.25.1|^2.0.2"
+    "@sveltejs/kit": "^1.25.1||^2.0.2"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.18.6",
