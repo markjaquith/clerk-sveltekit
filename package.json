@@ -1,13 +1,13 @@
 {
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build && bun run package",
+    "build": "vite build && npm run package",
     "preview": "vite preview",
     "package": "svelte-kit sync && svelte-package && publint",
-    "prepublishOnly": "bun run package",
-    "release": "bun run build && changeset publish",
-    "test": "bun test src && playwright test",
-    "test:unit": "bun test src",
+    "prepublishOnly": "npm run package",
+    "release": "npm run build && changeset publish",
+    "test": "npm test src && playwright test",
+    "test:unit": "npm test src",
     "test:e2e": "playwright test",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
