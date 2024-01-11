@@ -15,16 +15,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: oven-sh/setup-bun@v1
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          registry-url: 'https://npm.pkg.github.com'
       - name: Install
-        run: bun i --frozen-lockfile
-      - name: build
-        run: bun run build
+        run: npm ci
+      - name: Build
+        run: npm run build
       - name: Create Release Pull Request or Publish
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: bun run release
+          publish: npm run release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

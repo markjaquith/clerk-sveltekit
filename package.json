@@ -149,7 +149,7 @@
       ]
     }
   },
-  "name": "clerk-sveltekit",
+  "name": "@actuallyjamez/clerk-sveltekit",
   "version": "0.4.0",
   "description": "Adapter to use Clerk with SvelteKit",
   "svelte": "./dist/index.js",
@@ -157,7 +157,7 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/markjaquith/clerk-sveltekit.git"
+    "url": "git+ssh://git@github.com/actuallyjamez/clerk-sveltekit.git"
   },
   "author": "Mark Jaquith <mark@jaquith.me>",
   "license": "MIT",
@@ -166,35 +166,35 @@
     "@sveltejs/kit": "^1.25.1||^2.0.2"
   },
   "devDependencies": {
-    "@babel/preset-typescript": "^7.18.6",
-    "@changesets/cli": "^2.26.2",
-    "@clerk/types": "^3.55.0",
-    "@playwright/test": "^1.38.1",
-    "@sveltejs/adapter-cloudflare": "^3.0.0",
-    "@sveltejs/kit": "^2.0.0",
-    "@sveltejs/package": "^2.2.2",
-    "@sveltejs/vite-plugin-svelte": "^3.0.0",
+    "@babel/preset-typescript": "^7.23.3",
+    "@changesets/cli": "^2.27.1",
+    "@clerk/types": "^3.60.0",
+    "@playwright/test": "^1.40.1",
+    "@sveltejs/adapter-cloudflare": "^3.0.1",
+    "@sveltejs/kit": "^2.3.0",
+    "@sveltejs/package": "^2.2.5",
+    "@sveltejs/vite-plugin-svelte": "^3.0.1",
     "@svitejs/changesets-changelog-github-compact": "^1.1.0",
-    "@typescript-eslint/eslint-plugin": "^6.7.4",
-    "@typescript-eslint/parser": "^6.7.4",
+    "@typescript-eslint/eslint-plugin": "^6.18.1",
+    "@typescript-eslint/parser": "^6.18.1",
     "autoprefixer": "^10.4.16",
-    "eslint": "^8.51.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-svelte": "^2.34.0",
-    "postcss": "^8.4.31",
-    "prettier": "^3.0.3",
-    "prettier-plugin-svelte": "^2.8.0",
-    "prettier-plugin-tailwindcss": "^0.5.6",
-    "publint": "^0.2.4",
-    "svelte": "^4.0.0",
-    "svelte-check": "^3.5.2",
-    "tailwindcss": "^3.3.5",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-svelte": "^2.35.1",
+    "postcss": "^8.4.33",
+    "prettier": "^3.1.1",
+    "prettier-plugin-svelte": "^3.1.2",
+    "prettier-plugin-tailwindcss": "^0.5.11",
+    "publint": "^0.2.7",
+    "svelte": "^4.2.8",
+    "svelte-check": "^3.6.2",
+    "tailwindcss": "^3.4.1",
     "tslib": "^2.6.2",
-    "typescript": "^5.2.2",
-    "vite": "^5.0.0"
+    "typescript": "^5.3.3",
+    "vite": "^5.0.11"
   },
   "dependencies": {
-    "@clerk/backend": "^0.32.1",
-    "@clerk/clerk-js": "^4.61.0"
+    "@clerk/backend": "^0.37.1",
+    "@clerk/clerk-js": "^4.68.4"
   }
 }
