@@ -1,5 +1,11 @@
 # clerk-sveltekit
 
+## 0.4.1
+
+### Patch Changes
+
+- Fixed error in package.json ([`c20fb9b`](https://github.com/markjaquith/clerk-sveltekit/commit/c20fb9b0d05ef47a471c95a507b32afc6f9494ab))
+
 ## 0.4.0
 
 ### Minor Changes
