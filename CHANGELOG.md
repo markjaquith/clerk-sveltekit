@@ -1,5 +1,11 @@
 # clerk-sveltekit
 
+## 0.4.1
+
+### Patch Changes
+
+- Fixed error in package.json ([`ad2748e`](https://github.com/markjaquith/clerk-sveltekit/commit/ad2748ee7ce09def988a3840d42745654835341a))
+
 ## 0.4.0
 
 ### Minor Changes
