@@ -4,7 +4,7 @@
 
 ### Patch Changes
 
-- Fixed error in package.json ([`ad2748e`](https://github.com/markjaquith/clerk-sveltekit/commit/ad2748ee7ce09def988a3840d42745654835341a))
+- Fixed error in package.json ([`c20fb9b`](https://github.com/markjaquith/clerk-sveltekit/commit/c20fb9b0d05ef47a471c95a507b32afc6f9494ab))
 
 ## 0.4.0
 
