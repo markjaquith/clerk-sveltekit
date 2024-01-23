@@ -148,11 +148,11 @@ All components can be imported from `clerk-sveltekit/client/ComponentName.svelte
 - `<OrganizationSwitcher />` — Renders an organization switcher component.
 - `<CreateOrganization />` — Renders UI for creating an organization.
 
-Note that components should be used for displaying UI, but are not sufficient for protecting routes. To protect a route, use the `protectedRoutes` option passed to `handleClerk()` in your `hooks.server.ts` file.
+Note that components should be used for displaying UI, but are not sufficient for protecting routes. To protect a route, use the `protectedPaths` option passed to `handleClerk()` in your `hooks.server.ts` file.
 
 ## Protected Routes
 
-The `protectedRoutes` option will accept an array of either strings, or functions which accept a SvelteKit event object and return a boolean. When passed strings, any route that _starts_ with that string will be protected. i.e. protecting `'/admin'` will protect `/admin` but also `/admin/foo`.
+The `protectedPaths` option will accept an array of either strings, or functions which accept a SvelteKit event object and return a boolean. When passed strings, any route that _starts_ with that string will be protected. i.e. protecting `'/admin'` will protect `/admin` but also `/admin/foo`.
 
 ## Using Clerk data on the server
 
