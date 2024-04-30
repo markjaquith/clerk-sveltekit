@@ -1,5 +1,11 @@
 # clerk-sveltekit
 
+## 0.4.2
+
+### Patch Changes
+
+- Allow Svelte 5 as a peer dependency ([#56](https://github.com/markjaquith/clerk-sveltekit/pull/56))
+
 ## 0.4.1
 
 ### Patch Changes
