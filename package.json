@@ -162,7 +162,7 @@
   "author": "Mark Jaquith <mark@jaquith.me>",
   "license": "MIT",
   "peerDependencies": {
-    "svelte": "^4.0.0",
+    "svelte": "^4.0.0||^5.0.0",
     "@sveltejs/kit": "^1.25.1||^2.0.2"
   },
   "devDependencies": {
