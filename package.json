@@ -163,7 +163,7 @@
   "license": "MIT",
   "peerDependencies": {
     "svelte": "^5.0.0||^5.0.0-next.120",
-    "@sveltejs/kit": "^1.25.1||^2.0.2"
+    "@sveltejs/kit": "^2.5.0"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.18.6",
@@ -171,7 +171,7 @@
     "@clerk/types": "^3.55.0",
     "@playwright/test": "^1.38.1",
     "@sveltejs/adapter-cloudflare": "^3.0.0",
-    "@sveltejs/kit": "^2.0.0",
+    "@sveltejs/kit": "^2.5.7",
     "@sveltejs/package": "^2.2.2",
     "@sveltejs/vite-plugin-svelte": "^3.0.0",
     "@svitejs/changesets-changelog-github-compact": "^1.1.0",
