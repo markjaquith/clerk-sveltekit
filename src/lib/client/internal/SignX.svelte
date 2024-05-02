@@ -75,7 +75,7 @@
 			<Redirect to={redirectUrlFromParam} />
 		</SignedIn>
 		<SignedOut>
-			<div use:clerkUI={{ clerk, componentType, props: {...$$props, redirectUrl: clerkRedirectUrl, [afterSignXUrl]: null }}} />
+			<div use:clerkUI={{ clerk, componentType, props: {...$$props, redirectUrl: clerkRedirectUrl, [afterSignXUrl]: null }}}></div>
 		</SignedOut>
 	</ClerkLoaded>
 {/if}
