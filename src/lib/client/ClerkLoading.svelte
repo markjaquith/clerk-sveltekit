@@ -1,7 +1,7 @@
 <script lang="ts">
-	import clerk from './store.js'
+	import { isLoaded } from './store.js'
 </script>
 
-{#if !$clerk}
+{#if !isLoaded}
 	<slot />
 {/if}

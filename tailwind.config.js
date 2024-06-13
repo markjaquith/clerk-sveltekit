@@ -1,8 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./src/{routes,internal}/**/*.{js,svelte,ts}'],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
+	content: ['./src/{routes,internal}/**/*.{js,svelte,ts}'],
+	theme: {
+		extend: {},
+	},
+	plugins: [],
 }

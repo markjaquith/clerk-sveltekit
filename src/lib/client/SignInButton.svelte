@@ -1,25 +1,34 @@
 <script lang="ts">
-	import clerk from '../client/store.js'
+	import { clerk } from '../client/store.js'
+	import type { SignInProps } from '@clerk/types';
 	import type { HTMLButtonAttributes } from 'svelte/elements'
 
-	export let afterSignInUrl: string | undefined = undefined
-	export let afterSignUpUrl: string | undefined = undefined 
-	export let redirectUrl: string | undefined = undefined 
+	export let forceRedirectUrl: string | undefined = undefined
+	export let fallbackRedirectUrl: string | undefined = undefined
+	export let signUpFallbackRedirectUrl: string | undefined = undefined
+	export let signUpForceRedirectUrl: string | undefined = undefined
 	export let mode: "redirect" | "modal" | undefined = undefined
 
-  interface $$Props extends HTMLButtonAttributes {
-		afterSignInUrl?: string | undefined
-		afterSignUpUrl?: string | undefined
-		redirectUrl?: string | undefined
-		mode?: "redirect" | "modal" | undefined
-  }
-	
+    type $$Props = SignInProps & HTMLButtonAttributes & {
+  		mode?: "redirect" | "modal" | undefined
+    }
+
 	function signIn() {
-		const opts = { afterSignInUrl, afterSignUpUrl, redirectUrl }
+		const opts: SignInProps = {
+    		forceRedirectUrl,
+    		fallbackRedirectUrl,
+    		signUpFallbackRedirectUrl,
+    		signUpForceRedirectUrl
+		}
+
 		if (mode === 'modal') {
 			return $clerk?.openSignIn(opts)
 		}
-		return $clerk?.redirectToSignIn(opts)
+		return $clerk?.redirectToSignIn({
+		  ...opts,
+			signInFallbackRedirectUrl: fallbackRedirectUrl,
+            signInForceRedirectUrl: forceRedirectUrl,
+		})
 	}
 </script>
 

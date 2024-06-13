@@ -1,2 +1,5 @@
-export { default as handleClerk } from './handleClerk.js'
-export * from './session.js'
+export {
+	default as withClerkHandler,
+	type ClerkSvelteKitMiddlewareOptions,
+} from './withClerkHandler.js'
+export { clerkClient } from './clerkClient.js'

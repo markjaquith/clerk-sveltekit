@@ -1,3 +1,3 @@
-<div class="p-4 border border-yellow-500 rounded bg-opacity-70 bg-slate-100">
+<div class="rounded border border-yellow-500 bg-slate-100 bg-opacity-70 p-4">
 	<slot />
 </div>

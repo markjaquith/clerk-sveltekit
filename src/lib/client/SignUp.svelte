@@ -1,8 +1,11 @@
 <script lang="ts">
-	import SignX from './internal/SignX.svelte'
+	import clerkUI from './clerkui.js'
 	import type { SignUpProps } from '@clerk/types'
+	import ClerkLoaded from './ClerkLoaded.svelte'
 
 	type $$Props = SignUpProps
 </script>
 
-<SignX x="up" {...$$props} />
+<ClerkLoaded let:clerk>
+	<div use:clerkUI={{ clerk, componentType: 'SignUp', props: {...$$props }}} />
+</ClerkLoaded>

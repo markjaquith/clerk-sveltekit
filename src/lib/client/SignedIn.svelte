@@ -1,9 +1,7 @@
 <script lang="ts">
-	import ClerkLoaded from './ClerkLoaded.svelte'
+	import { auth } from '$lib/client/store.js'
 </script>
 
-<ClerkLoaded let:clerk>
-	{#if clerk && clerk.user}
-		<slot user={clerk.user} />
-	{/if}
-</ClerkLoaded>
+{#if $auth?.userId}
+	<slot user={$auth.user} />
+{/if}

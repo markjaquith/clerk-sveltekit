@@ -1,12 +1,39 @@
-import type { PlaywrightTestConfig } from '@playwright/test'
+import { defineConfig, devices } from '@playwright/test'
 
-const config: PlaywrightTestConfig = {
+// Use process.env.PORT by default and fallback to port 4173
+const PORT = process.env.PORT || 4173
+
+const baseURL = `http://localhost:${PORT}`
+
+export default defineConfig({
+	timeout: 30 * 1000,
+	testDir: 'e2e',
+	retries: 1,
+	outputDir: 'test-results/',
 	webServer: {
-		command: 'npm run build && npm run preview',
-		port: 4173,
+		command: 'bun run build && bun run preview',
+		url: baseURL,
+		timeout: 120 * 1000,
+		reuseExistingServer: !process.env.CI,
 	},
-	testDir: 'tests',
-	testMatch: /(.+\.)?(test|spec)\.[jt]s/,
-}
 
-export default config
+	use: {
+		baseURL,
+		trace: 'retry-with-trace',
+		headless: false,
+	},
+
+	projects: [
+		{
+			name: 'global setup',
+			testMatch: /global\.setup\.ts/,
+		},
+		{
+			name: 'Desktop Chrome',
+			use: {
+				...devices['Desktop Chrome'],
+			},
+			dependencies: ['global setup'],
+		},
+	],
+})

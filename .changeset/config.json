@@ -1,6 +1,9 @@
 {
 	"$schema": "https://unpkg.com/@changesets/config@2.3.1/schema.json",
-	"changelog": ["@svitejs/changesets-changelog-github-compact", { "repo": "markjaquith/clerk-sveltekit" }],
+	"changelog": [
+		"@svitejs/changesets-changelog-github-compact",
+		{ "repo": "markjaquith/clerk-sveltekit" }
+	],
 	"commit": false,
 	"fixed": [],
 	"linked": [],

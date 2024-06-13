@@ -41,19 +41,10 @@ Note that for production sites using OAuth providers, you will have to do some m
 
 Add this to `src/hooks.server.ts` (or integrate this code with your existing `hooks.server.ts` file):
 
-```typescript
-import type { Handle } from '@sveltejs/kit'
-import { sequence } from '@sveltejs/kit/hooks'
-import { handleClerk } from 'clerk-sveltekit/server'
-import { CLERK_SECRET_KEY } from '$env/static/private'
+```ts
+import { withClerkHandler } from 'clerk-sveltekit/server'
 
-export const handle: Handle = sequence(
-	handleClerk(CLERK_SECRET_KEY, {
-		debug: true,
-		protectedPaths: ['/admin'],
-		signInUrl: '/sign-in',
-	})
-)
+export const handle = withClerkHandler()
 ```
 
 ### Configure the client hook
@@ -61,29 +52,19 @@ export const handle: Handle = sequence(
 Add this to `src/hooks.client.ts`:
 
 ```typescript
-import type { HandleClientError } from '@sveltejs/kit'
-// To use Clerk components:
 import { initializeClerkClient } from 'clerk-sveltekit/client'
-// Or for headless mode:
-// import { initializeClerkClient } from 'clerk-sveltekit/headless'
 import { PUBLIC_CLERK_PUBLISHABLE_KEY } from '$env/static/public'
 
-initializeClerkClient(PUBLIC_CLERK_PUBLISHABLE_KEY, {
-	afterSignInUrl: '/admin/',
-	afterSignUpUrl: '/admin/',
+initializeClerkClient({
+	publishableKey: PUBLIC_CLERK_PUBLISHABLE_KEY,
+	signInForceRedirectUrl: '/admin',
+	signUpForceRedirectUrl: '/admin',
 	signInUrl: '/sign-in',
 	signUpUrl: '/sign-up',
 })
-
-export const handleError: HandleClientError = async ({ error, event }) => {
-	console.error(error, event)
-}
 ```
 
 Customize the protected paths, and the various URLs as you like.
-
-> [!NOTE]
-> If you use `clerk-sveltekit/headless` instead of `clerk-sveltekit/client`, your bundle will be much smaller (by about 1MB), but you will not have access to `<SignIn />`, `<SignUp />`, `<UserProfile />`, `<UserButton />`, `<OrganizationProfile />`, `<OrganizationSwitcher />`, or `<CreateOrganization />`. Sign-ins will have to happen on your `accounts.{TLD}` subdomain.
 
 ### Use the components
 
@@ -95,7 +76,7 @@ Next, put the `SignIn` component on your sign in page:
 </script>
 
 <div>
-	<SignIn redirectUrl="/admin" />
+	<SignIn />
 </div>
 ```
 
@@ -107,7 +88,7 @@ And put the `SignUp` component on your sign up page:
 </script>
 
 <div>
-	<SignUp redirectUrl="/admin" />
+	<SignUp />
 </div>
 ```
 
@@ -147,16 +128,30 @@ All components can be imported from `clerk-sveltekit/client/ComponentName.svelte
 - `<OrganizationProfile />` — Renders the organization profile component.
 - `<OrganizationSwitcher />` — Renders an organization switcher component.
 - `<CreateOrganization />` — Renders UI for creating an organization.
+- `<Protect />` — Wrapper that shows its contents when the current user has the specified [permission or role](https://clerk.com/docs/organizations/roles-permissions) in the organization.
 
-Note that components should be used for displaying UI, but are not sufficient for protecting routes. To protect a route, use the `protectedPaths` option passed to `handleClerk()` in your `hooks.server.ts` file.
+Note that components should be used for displaying UI, but are not sufficient for protecting routes. To protect a route, you check the value of `userId` in the `auth` local and redirect if it is not set, for example.
 
-## Protected Routes
+```ts
+import { redirect } from '@sveltejs/kit'
+import { clerkClient, buildClerkInitialState } from 'svelte-clerk/server'
 
-The `protectedPaths` option will accept an array of either strings, or functions which accept a SvelteKit event object and return a boolean. When passed strings, any route that _starts_ with that string will be protected. i.e. protecting `'/admin'` will protect `/admin` but also `/admin/foo`.
+export const load = ({ locals }) => {
+	if (!locals.auth.userId) {
+		return redirect(307, '/sign-in')
+	}
+
+	const user = await clerkClient.users.getUser(userId)
+
+	return {
+		user: buildClerkInitialState(user),
+	}
+}
+```
 
 ## Using Clerk data on the server
 
-Server-side protected routes will automatically get a [Clerk user object](https://clerk.com/docs/references/javascript/user/user) injected into `locals.session` which means you can use it [in a `load()` function](https://kit.svelte.dev/docs/form-actions#loading-data), a [default action](https://kit.svelte.dev/docs/form-actions#default-actions), or a [form action](https://kit.svelte.dev/docs/form-actions).
+Server-side protected routes will automatically get a [Clerk user object](https://clerk.com/docs/references/javascript/user/user) injected into `locals.auth` which means you can use it [in a `load()` function](https://kit.svelte.dev/docs/form-actions#loading-data), a [default action](https://kit.svelte.dev/docs/form-actions#default-actions), or a [form action](https://kit.svelte.dev/docs/form-actions).
 
 ## Thanks
 

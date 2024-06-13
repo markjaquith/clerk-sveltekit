@@ -19,7 +19,7 @@
 		<nav class="flex items-center gap-x-2">
 			{#each [
 				{ href: '/admin', text: 'Admin Panel', signedIn: false },
-				{ href: '/admin/profile', text: 'Profile', signedIn: true }
+				{ href: '/admin/profile', text: 'Profile', signedIn: false }
 			] as link}
 				{@const extraClasses = path === link.href ? 'bg-gray-500 text-white' : 'text-gray-900'}
 				<Wrap inside={SignedIn} when={link.signedIn}>

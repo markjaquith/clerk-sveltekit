@@ -1,17 +1,15 @@
 <script lang="ts">
-	import clerk from '../client/store.js'
+	import { clerk } from '../client/store.js'
 	import type { HTMLButtonAttributes } from 'svelte/elements'
+	import type { SignOutOptions } from '@clerk/types';
 
-	export let signOutCallback: (() => void) | undefined = undefined
-	export let signOutOptions: Record<string, unknown> | undefined = undefined
+	export let sessionId: string | undefined = undefined
+	export let redirectUrl: string | undefined = '/'
 
-  interface $$Props extends HTMLButtonAttributes {
-		signOutCallback?: (() => void) | undefined
-		signOutOptions?: Record<string, unknown> | undefined
-  }
-	
+    type $$Props = SignOutOptions & HTMLButtonAttributes
+
 	function signOut() {
-		return $clerk?.signOut(signOutCallback, signOutOptions)
+		return $clerk?.signOut({ sessionId, redirectUrl })
 	}
 </script>
 

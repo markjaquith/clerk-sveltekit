@@ -1,36 +1,57 @@
-import type Clerk from '@clerk/clerk-js'
-import type ClerkHeadless from '@clerk/clerk-js/headless'
-import type { ClerkOptions } from '@clerk/types'
-import type ClerkStore from './store.js'
+import type { Clerk, ClerkOptions, ClientResource, InitialState, Without } from '@clerk/types'
+import { loadClerkJsScript, type ClerkInitOptions } from './utils'
+import { goto } from '$app/navigation'
 
-export const DEFAULT_OPTIONS: ClerkOptions = {
-	afterSignInUrl: '/',
-	afterSignUpUrl: '/',
-	signInUrl: '/sign-in',
-	signUpUrl: '/sign-up',
+import { clerk, initialState, resources, isLoaded } from './store.js'
+
+export interface HeadlessBrowserClerk extends Clerk {
+	load: (opts?: Without<ClerkOptions, 'isSatellite'>) => Promise<void>
+	updateClient: (client: ClientResource) => void
 }
 
-export default async function initializeClerkClient(
-	clerk: typeof ClerkStore,
-	clerkClass: typeof Clerk | typeof ClerkHeadless,
-	key: string,
-	options: ClerkOptions = DEFAULT_OPTIONS
-): Promise<void> {
-	const instance = new clerkClass(key)
+export interface BrowserClerk extends HeadlessBrowserClerk {
+	onComponentsReady: Promise<void>
+	components: unknown
+}
 
-	await instance.load(options).catch((error: Error) => {
-		console.error('[Clerk SvelteKit] Failed to load Clerk:', error)
+declare global {
+	interface Window {
+		Clerk: HeadlessBrowserClerk | BrowserClerk
+		__CLERK_SK_AUTH__: InitialState
+	}
+}
+
+export default async function initializeClerkClient(options: ClerkInitOptions): Promise<void> {
+	// Data comes from the Clerk middleware
+	initialState.set(window.__CLERK_SK_AUTH__)
+
+	await loadClerkJsScript({
+		routerPush: (url: string) => goto(url),
+		routerReplace: (url: string) => goto(url, { replaceState: true }),
+		signInForceRedirectUrl: '/',
+		signUpForceRedirectUrl: '/',
+		signInUrl: '/sign-in',
+		signUpUrl: '/sign-up',
+		...options,
 	})
 
-	instance.addListener((event) => {
-		if (event.user) {
-			document.dispatchEvent(new CustomEvent('clerk-sveltekit:user', { detail: event.user }))
-		}
+	if (!window.Clerk) {
+		return
+	}
+
+	await window.Clerk.load(options)
+
+	isLoaded.set(true)
+	clerk.set(window.Clerk)
+	resources.set({
+		client: window.Clerk.client as ClientResource,
+		session: window.Clerk.session,
+		user: window.Clerk.user,
+		organization: window.Clerk.organization,
 	})
 
-	clerk.set(instance)
-
-	clerk.subscribe((clerkInstance) => {
-		if (clerkInstance) window.Clerk = clerkInstance
+	window.Clerk.addListener((payload) => {
+		resources.set(payload)
+		clerk.set(window.Clerk)
 	})
 }
