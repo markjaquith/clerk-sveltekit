@@ -118,6 +118,7 @@ All components can be imported from `clerk-sveltekit/client/ComponentName.svelte
 - `<ClerkLoaded let:clerk />` — Wrapper that shows its contents (and exposes the `clerk` object) when Clerk is done loading.
 - `<SignIn />` — Renders a sign-in form.
 - `<SignUp />` — Renders a sign-up form.
+- `<GoogleOneTap /> - Renders a Google One Tap sign-in button.
 - `<SignedIn let:user />` — Wrapper that shows its contents (and exposes the Clerk `user` object) when the user is signed in.
 - `<SignedOut />` — Wrapper that shows its contents when the user is not signed in.
 - `<UserButton />` — Button that shows the user’s profile photo with log out link when they are signed in.
@@ -134,7 +135,7 @@ Note that components should be used for displaying UI, but are not sufficient fo
 
 ```ts
 import { redirect } from '@sveltejs/kit'
-import { clerkClient, buildClerkInitialState } from 'svelte-clerk/server'
+import { clerkClient } from 'svelte-clerk/server'
 
 export const load = ({ locals }) => {
 	if (!locals.auth.userId) {
@@ -144,7 +145,7 @@ export const load = ({ locals }) => {
 	const user = await clerkClient.users.getUser(userId)
 
 	return {
-		user: buildClerkInitialState(user),
+		user: JSON.parse(JSON.stringify(user)),
 	}
 }
 ```
