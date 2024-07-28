@@ -3,6 +3,9 @@ import { clerkClient } from './clerkClient.js'
 import * as constants from './constants.js'
 import {
 	AuthStatus,
+	type AuthObject,
+	makeAuthObjectSerializable,
+	stripPrivateDataFromObject,
 	createClerkRequest,
 	type AuthenticateRequestOptions,
 } from '@clerk/backend/internal'
@@ -46,6 +49,32 @@ export default function withClerkHandler(middlewareOptions?: ClerkSvelteKitMiddl
 			event.setHeaders(Object.fromEntries(requestState.headers))
 		}
 
-		return resolve(event)
+		return resolve(event, {
+			transformPageChunk({ html }) {
+				return attachAuthObjectToHTML(html, authObject)
+			},
+		})
 	}) satisfies Handle
+}
+
+/**
+ * Attaches the auth object to the HTML string for hydration.
+ */
+function attachAuthObjectToHTML(html: string, authObject: AuthObject) {
+	const initialState = makeAuthObjectSerializable(stripPrivateDataFromObject(authObject))
+
+	const script = `
+    <script>
+      window.__CLERK_SK_AUTH__ = ${JSON.stringify(initialState)};
+    </script>
+  `
+
+	const headClosingTag = '</head>'
+	const indexOfHeadClosingTag = html.indexOf(headClosingTag)
+
+	if (indexOfHeadClosingTag === -1) {
+		throw new Error('No </head> tag found in the HTML string')
+	}
+
+	return html.slice(0, indexOfHeadClosingTag) + script + html.slice(indexOfHeadClosingTag)
 }

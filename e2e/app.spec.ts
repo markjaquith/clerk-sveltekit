@@ -34,8 +34,8 @@ test.describe('app', () => {
 		await signInButton.click()
 
 		await page.waitForURL(URL_SIGN_IN)
-		await expect(page.locator("h1")).toContainText("Sign in")
-    await page.waitForSelector('.cl-signIn-root', { state: 'attached' })
+		await expect(page.locator('h1')).toContainText('Sign in')
+		await page.waitForSelector('.cl-signIn-root', { state: 'attached' })
 
 		await page.locator('input[name=identifier]').fill(process.env.E2E_CLERK_USER_USERNAME!)
 		await page.getByRole('button', { name: 'Continue', exact: true }).click()
