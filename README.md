@@ -47,6 +47,16 @@ import { withClerkHandler } from 'clerk-sveltekit/server'
 export const handle = withClerkHandler()
 ```
 
+Update the `app.d.ts` file to ensure that the locals added by the Clerk handler are properly typed.
+
+```ts
+/// <reference types="clerk-sveltekit/env" />
+
+declare global {
+	namespace App {...}
+}
+```
+
 ### Configure the client hook
 
 Add this to `src/hooks.client.ts`:
