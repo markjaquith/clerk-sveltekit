@@ -41,6 +41,7 @@
 	<li><code>&lt;ClerkLoaded let:clerk /&gt;</code> — Wrapper that shows its contents (and exposes the <code>clerk</code> object) when Clerk is done loading.</li>
 	<li><code>&lt;SignIn /&gt;</code> — Renders a sign-in form.</li>
 	<li><code>&lt;SignUp /&gt;</code> — Renders a sign-up form.</li>
+	<li><code>&lt;GoogleOneTap /&gt;</code> — Renders the Google One Tap UI.</li>
 	<li><code>&lt;SignedIn let:user /&gt;</code> — Wrapper that shows its contents (and exposes the Clerk <code>user</code> object) when the user is signed in.</li>
 	<li><code>&lt;SignedOut /&gt;</code> — Wrapper that shows its contents when the user is not signed in.</li>
 	<li><code>&lt;UserButton /&gt;</code> — Button that shows the user’s profile photo with log out link when they are signed in.</li>

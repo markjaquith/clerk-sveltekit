@@ -118,7 +118,7 @@ All components can be imported from `clerk-sveltekit/client/ComponentName.svelte
 - `<ClerkLoaded let:clerk />` — Wrapper that shows its contents (and exposes the `clerk` object) when Clerk is done loading.
 - `<SignIn />` — Renders a sign-in form.
 - `<SignUp />` — Renders a sign-up form.
-- `<GoogleOneTap /> - Renders a Google One Tap sign-in button.
+- `<GoogleOneTap />` - Renders the [Google One Tap](https://developers.google.com/identity/gsi/web/guides/features) UI.
 - `<SignedIn let:user />` — Wrapper that shows its contents (and exposes the Clerk `user` object) when the user is signed in.
 - `<SignedOut />` — Wrapper that shows its contents when the user is not signed in.
 - `<UserButton />` — Button that shows the user’s profile photo with log out link when they are signed in.
