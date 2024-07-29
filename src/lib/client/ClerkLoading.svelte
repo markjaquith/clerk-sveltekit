@@ -2,6 +2,6 @@
 	import { isLoaded } from './store.js'
 </script>
 
-{#if !isLoaded}
+{#if !$isLoaded}
 	<slot />
 {/if}
