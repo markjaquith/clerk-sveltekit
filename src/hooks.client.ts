@@ -12,7 +12,7 @@ initializeClerkClient({
 	signInForceRedirectUrl: '/admin',
 	signUpForceRedirectUrl: '/admin',
 	signInUrl: PUBLIC_CLERK_SIGN_IN_URL,
-	signUpUrl: PUBLIC_CLERK_SIGN_UP_URL,
+	signUpUrl: PUBLIC_CLERK_SIGN_UP_URL
 })
 
 export const handleError: HandleClientError = async ({ error, event }) => {
