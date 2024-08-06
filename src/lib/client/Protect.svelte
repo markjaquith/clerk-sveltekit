@@ -9,7 +9,7 @@
 
 	const has = (params: Parameters<CheckAuthorizationWithCustomPermissions>[0]) => {
       if (!params?.permission && !params?.role)
-        throw new Error('Missing parameters. The prop permission or role is required to be passed. Example usage: `has({permission: "org:posts:edit"`')
+        throw new Error('Missing parameters. The prop permission or role is required to be passed. Example usage: `has({permission: "org:posts:edit"})`')
       if (!$auth.orgId || !$auth.userId || !$auth.orgRole || !$auth.orgPermissions)
         return false
 
