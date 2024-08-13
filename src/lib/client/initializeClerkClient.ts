@@ -28,13 +28,13 @@ export default async function initializeClerkClient(options: LoadClerkJsScriptOp
 	initialState.set(window.__CLERK_SK_AUTH__)
 
 	await loadClerkJsScript({
+	  ...options,
 		routerPush: (url: string) => goto(url),
 		routerReplace: (url: string) => goto(url, { replaceState: true }),
 		signInForceRedirectUrl: '/',
 		signUpForceRedirectUrl: '/',
 		signInUrl: '/sign-in',
 		signUpUrl: '/sign-up',
-		...options,
 	})
 
 	if (!window.Clerk) {
