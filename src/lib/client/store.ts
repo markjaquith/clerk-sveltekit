@@ -1,7 +1,7 @@
 import { derived, writable, type Writable } from 'svelte/store'
 import type { ClientResource, InitialState, Resources } from '@clerk/types'
 import type { BrowserClerk, HeadlessBrowserClerk } from './initializeClerkClient'
-import { deriveState } from './utils'
+import { deriveState } from '@clerk/shared/deriveState'
 
 export const clerk: Writable<HeadlessBrowserClerk | BrowserClerk | null> = writable(null)
 
