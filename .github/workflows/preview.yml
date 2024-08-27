@@ -1,0 +1,18 @@
+name: Preview
+on:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: oven-sh/setup-bun@v1
+      - name: Install
+        run: bun i --frozen-lockfile
+      - name: build
+        run: bun run build
+      - name: Publish to pkg.pr.new
+        run: bunx pkg-pr-new publish --compact
