@@ -4,6 +4,10 @@ on:
     branches:
       - '**'
 
+env:
+  CLERK_SECRET_KEY: ${{ secrets.CLERK_SECRET_KEY }}
+  PUBLIC_CLERK_PUBLISHABLE_KEY: ${{ vars.PUBLIC_CLERK_PUBLISHABLE_KEY }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
