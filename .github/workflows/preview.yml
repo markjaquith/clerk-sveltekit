@@ -19,4 +19,4 @@ jobs:
       - name: build
         run: bun run build
       - name: Publish to pkg.pr.new
-        run: bunx pkg-pr-new publish --compact
+        run: bunx pkg-pr-new publish
