@@ -3,12 +3,14 @@ import { clerkClient } from './clerkClient.js'
 import * as constants from './constants.js'
 import {
 	AuthStatus,
-	type AuthObject,
 	makeAuthObjectSerializable,
 	stripPrivateDataFromObject,
 	createClerkRequest,
 	type AuthenticateRequestOptions,
 } from '@clerk/backend/internal'
+import type { AuthObject } from '@clerk/backend'
+import type { CookieSerializeOptions } from 'cookie'
+import { parse } from 'set-cookie-parser'
 
 export type ClerkSvelteKitMiddlewareOptions = AuthenticateRequestOptions & { debug?: boolean }
 
@@ -46,6 +48,17 @@ export default function withClerkHandler(middlewareOptions?: ClerkSvelteKitMiddl
 		}
 
 		if (requestState.headers) {
+			const setCookie = requestState.headers.get('set-cookie')
+			// We separate cookie setting logic because SvelteKit
+			// does not allow setting cookies with setHeaders.
+			if (setCookie) {
+				const parsedCookies = parse(setCookie)
+				parsedCookies.forEach((parsedCookie) => {
+					const { name, value, ...options } = parsedCookie
+					event.cookies.set(name, value, options as CookieSerializeOptions & { path: string })
+				})
+				requestState.headers.delete('set-cookie')
+			}
 			event.setHeaders(Object.fromEntries(requestState.headers))
 		}
 

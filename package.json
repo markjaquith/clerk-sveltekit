@@ -182,6 +182,7 @@
     "@sveltejs/package": "^2.2.2",
     "@sveltejs/vite-plugin-svelte": "^3.0.0",
     "@svitejs/changesets-changelog-github-compact": "^1.1.0",
+    "@types/set-cookie-parser": "^2.4.10",
     "@typescript-eslint/eslint-plugin": "^6.7.4",
     "@typescript-eslint/parser": "^6.7.4",
     "autoprefixer": "^10.4.16",
@@ -203,6 +204,7 @@
   "dependencies": {
     "@clerk/backend": "^1.6.2",
     "@clerk/shared": "^2.5.1",
-    "@clerk/types": "^4.13.1"
+    "@clerk/types": "^4.13.1",
+    "set-cookie-parser": "^2.7.0"
   }
 }

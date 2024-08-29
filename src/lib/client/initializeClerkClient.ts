@@ -1,10 +1,14 @@
 import type { Clerk, ClerkOptions, ClientResource, InitialState, Without } from '@clerk/types'
-import { loadClerkJsScript, setClerkJsLoadingErrorPackageName, type LoadClerkJsScriptOptions } from '@clerk/shared/loadClerkJsScript'
+import {
+	loadClerkJsScript,
+	setClerkJsLoadingErrorPackageName,
+	type LoadClerkJsScriptOptions,
+} from '@clerk/shared/loadClerkJsScript'
 import { goto } from '$app/navigation'
 
 import { clerk, initialState, resources, isLoaded } from './store.js'
 
-setClerkJsLoadingErrorPackageName('clerk-sveltekit');
+setClerkJsLoadingErrorPackageName('clerk-sveltekit')
 
 export interface HeadlessBrowserClerk extends Clerk {
 	load: (opts?: Without<ClerkOptions, 'isSatellite'>) => Promise<void>
@@ -23,12 +27,14 @@ declare global {
 	}
 }
 
-export default async function initializeClerkClient(options: LoadClerkJsScriptOptions): Promise<void> {
+export default async function initializeClerkClient(
+	options: LoadClerkJsScriptOptions
+): Promise<void> {
 	// Data comes from the Clerk middleware
 	initialState.set(window.__CLERK_SK_AUTH__)
 
 	await loadClerkJsScript({
-	  ...options,
+		...options,
 		routerPush: (url: string) => goto(url),
 		routerReplace: (url: string) => goto(url, { replaceState: true }),
 		signInForceRedirectUrl: '/',
