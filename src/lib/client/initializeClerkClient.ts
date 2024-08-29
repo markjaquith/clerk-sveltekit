@@ -54,6 +54,5 @@ export default async function initializeClerkClient(options: LoadClerkJsScriptOp
 
 	window.Clerk.addListener((payload) => {
 		resources.set(payload)
-		clerk.set(window.Clerk)
 	})
 }
