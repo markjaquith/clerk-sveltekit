@@ -67,8 +67,8 @@ import { PUBLIC_CLERK_PUBLISHABLE_KEY } from '$env/static/public'
 
 initializeClerkClient({
 	publishableKey: PUBLIC_CLERK_PUBLISHABLE_KEY,
-	signInForceRedirectUrl: '/admin',
-	signUpForceRedirectUrl: '/admin',
+	signInForceRedirectUrl: '/',
+	signUpForceRedirectUrl: '/',
 	signInUrl: '/sign-in',
 	signUpUrl: '/sign-up',
 })
@@ -112,7 +112,7 @@ Then, where you want to show the signed-in user's photo and sign out button (pro
 </script>
 
 <SignedIn>
-	<UserButton afterSignOutUrl="/" />
+	<UserButton />
 </SignedIn>
 <SignedOut>
 	<a href="/sign-in">Sign in</a> <span>|</span> <a href="/sign-up">Sign up</a>
