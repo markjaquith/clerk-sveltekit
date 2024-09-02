@@ -1,41 +1,41 @@
 # Clerk SvelteKit
 
-`clerk-sveltekit` is a community maintained [Clerk](https://clerk.com/) authentication integration for [SvelteKit](https://kit.svelte.dev/). Visit a live [demo](https://clerk-sveltekit.markjaquith.com/), which is just this repository hosted on Cloudflare Pages.
+Adapter for using [Clerk](https://clerk.com/) authentication in [SvelteKit](https://kit.svelte.dev/).
+
+[Demo](https://clerk-sveltekit.markjaquith.com/)
+
+The demo site is just this repository, hosted on Cloudflare Pages.
 
 ## Installation
 
-Add `clerk-sveltekit` with your package manager of choice:
+### Install package
 
-```shell
-npm install clerk-sveltekit
 ```
+# npm
+npm i clerk-sveltekit
 
-```shell
-pnpm add clerk-sveltekit
-```
+# pnpm
+pnpm i clerk-sveltekit
 
-```shell
+# yarn
 yarn add clerk-sveltekit
-```
 
-```shell
-bun add clerk-sveltekit
+# bun
+bun i clerk-sveltekit
 ```
-
-## Usage
 
 ### Set up environment variables
 
-If you haven't already, create a `.env` file at the root of your application. Inside, add these two environment variables:
+Add these values to your `.env` (get them from Clerk after creating an application there):
 
 ```env
-PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_xxx
-CLERK_SECRET_KEY=sk_test_xxx
+PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_abcdefg123
+CLERK_SECRET_KEY=sk_test_abcdefg123
 ```
 
-These keys can always be retrieved from the [API keys](https://dashboard.clerk.com/last-active?path=api-keys) page of your Clerk Dashboard. Inside the dropdown choose "Astro" and copy/paste the values.
+The easiest way to get these values is to click "API Keys" in the Clerk dashboard, and then copy the values for Next.js, and change `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` to `PUBLIC_CLERK_PUBLISHABLE_KEY`.
 
-**Note:** For production instances using OAuth providers, you will have to do some more setup with Clerk and DNS.
+Note that for production sites using OAuth providers, you will have to do some more setup with Clerk and DNS.
 
 ### Configure the server hook
 
@@ -78,7 +78,7 @@ Customize the protected paths, and the various URLs as you like.
 
 ### Use the components
 
-Next, put the `<SignIn />` component on your sign in page:
+Next, put the `SignIn` component on your sign in page:
 
 ```svelte
 <script lang="ts">
@@ -90,7 +90,7 @@ Next, put the `<SignIn />` component on your sign in page:
 </div>
 ```
 
-And place the `<SignUp />` component on your sign up page:
+And put the `SignUp` component on your sign up page:
 
 ```svelte
 <script lang="ts">
@@ -102,7 +102,7 @@ And place the `<SignUp />` component on your sign up page:
 </div>
 ```
 
-Then, where you want to show the signed-in user's photo and sign out button (probably in a `+layout.svelte` file in the header):
+Then, where you want to show the signed in user's photo and sign out button (probably in a `+layout.svelte` file in the header):
 
 ```svelte
 <script lang="ts">
@@ -140,7 +140,7 @@ All components can be imported from `clerk-sveltekit/client/ComponentName.svelte
 - `<CreateOrganization />` — Renders UI for creating an organization.
 - `<Protect />` — Wrapper that shows its contents when the current user has the specified [permission or role](https://clerk.com/docs/organizations/roles-permissions) in the organization.
 
-**Note:** Components should be used for displaying UI, but are not sufficient for protecting routes. To protect a route, you check the value of `userId` in the `auth` local and redirect if it is not set, for example.
+Note that components should be used for displaying UI, but are not sufficient for protecting routes. To protect a route, you check the value of `userId` in the `auth` local and redirect if it is not set, for example.
 
 ```ts
 import { redirect } from '@sveltejs/kit'
