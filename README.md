@@ -82,7 +82,7 @@ Next, put the `<SignIn />` component on your sign in page:
 
 ```svelte
 <script lang="ts">
-import SignIn from 'clerk-sveltekit/client/SignIn.svelte'
+	import SignIn from 'clerk-sveltekit/client/SignIn.svelte'
 </script>
 
 <div>
@@ -94,7 +94,7 @@ And place the `<SignUp />` component on your sign up page:
 
 ```svelte
 <script lang="ts">
-import SignUp from 'clerk-sveltekit/client/SignUp.svelte'
+	import SignUp from 'clerk-sveltekit/client/SignUp.svelte'
 </script>
 
 <div>
@@ -106,9 +106,9 @@ Then, where you want to show the signed-in user's photo and sign out button (pro
 
 ```svelte
 <script lang="ts">
-import UserButton from 'clerk-sveltekit/client/UserButton.svelte'
-import SignedIn from 'clerk-sveltekit/client/SignedIn.svelte'
-import SignedOut from 'clerk-sveltekit/client/SignedOut.svelte'
+	import UserButton from 'clerk-sveltekit/client/UserButton.svelte'
+	import SignedIn from 'clerk-sveltekit/client/SignedIn.svelte'
+	import SignedOut from 'clerk-sveltekit/client/SignedOut.svelte'
 </script>
 
 <SignedIn>
