@@ -1,41 +1,41 @@
 # Clerk SvelteKit
 
-Adapter for using [Clerk](https://clerk.com/) authentication in [SvelteKit](https://kit.svelte.dev/).
-
-[Demo](https://clerk-sveltekit.markjaquith.com/)
-
-The demo site is just this repository, hosted on Cloudflare Pages.
+`clerk-sveltekit` is a community maintained [Clerk](https://clerk.com/) authentication integration for [SvelteKit](https://kit.svelte.dev/). Visit a live [demo](https://clerk-sveltekit.markjaquith.com/), which is just this repository hosted on Cloudflare Pages.
 
 ## Installation
 
-### Install package
+Add `clerk-sveltekit` with your package manager of choice:
 
+```shell
+npm install clerk-sveltekit
 ```
-# npm
-npm i clerk-sveltekit
 
-# pnpm
-pnpm i clerk-sveltekit
+```shell
+pnpm add clerk-sveltekit
+```
 
-# yarn
+```shell
 yarn add clerk-sveltekit
-
-# bun
-bun i clerk-sveltekit
 ```
+
+```shell
+bun add clerk-sveltekit
+```
+
+## Usage
 
 ### Set up environment variables
 
-Add these values to your `.env` (get them from Clerk after creating an application there):
+If you haven't already, create a `.env` file at the root of your application. Inside, add these two environment variables:
 
 ```env
-PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_abcdefg123
-CLERK_SECRET_KEY=sk_test_abcdefg123
+PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_xxx
+CLERK_SECRET_KEY=sk_test_xxx
 ```
 
-The easiest way to get these values is to click "API Keys" in the Clerk dashboard, and then copy the values for Next.js, and change `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` to `PUBLIC_CLERK_PUBLISHABLE_KEY`.
+These keys can always be retrieved from the [API keys](https://dashboard.clerk.com/last-active?path=api-keys) page of your Clerk Dashboard. Inside the dropdown choose "Astro" and copy/paste the values.
 
-Note that for production sites using OAuth providers, you will have to do some more setup with Clerk and DNS.
+**Note:** For production instances using OAuth providers, you will have to do some more setup with Clerk and DNS.
 
 ### Configure the server hook
 
@@ -67,8 +67,8 @@ import { PUBLIC_CLERK_PUBLISHABLE_KEY } from '$env/static/public'
 
 initializeClerkClient({
 	publishableKey: PUBLIC_CLERK_PUBLISHABLE_KEY,
-	signInForceRedirectUrl: '/admin',
-	signUpForceRedirectUrl: '/admin',
+	signInForceRedirectUrl: '/',
+	signUpForceRedirectUrl: '/',
 	signInUrl: '/sign-in',
 	signUpUrl: '/sign-up',
 })
@@ -78,7 +78,7 @@ Customize the protected paths, and the various URLs as you like.
 
 ### Use the components
 
-Next, put the `SignIn` component on your sign in page:
+Next, put the `<SignIn />` component on your sign in page:
 
 ```svelte
 <script lang="ts">
@@ -90,7 +90,7 @@ Next, put the `SignIn` component on your sign in page:
 </div>
 ```
 
-And put the `SignUp` component on your sign up page:
+And place the `<SignUp />` component on your sign up page:
 
 ```svelte
 <script lang="ts">
@@ -102,7 +102,7 @@ And put the `SignUp` component on your sign up page:
 </div>
 ```
 
-Then, where you want to show the signed in user's photo and sign out button (probably in a `+layout.svelte` file in the header):
+Then, where you want to show the signed-in user's photo and sign out button (probably in a `+layout.svelte` file in the header):
 
 ```svelte
 <script lang="ts">
@@ -112,7 +112,7 @@ Then, where you want to show the signed in user's photo and sign out button (pro
 </script>
 
 <SignedIn>
-	<UserButton afterSignOutUrl="/" />
+	<UserButton />
 </SignedIn>
 <SignedOut>
 	<a href="/sign-in">Sign in</a> <span>|</span> <a href="/sign-up">Sign up</a>
@@ -140,7 +140,7 @@ All components can be imported from `clerk-sveltekit/client/ComponentName.svelte
 - `<CreateOrganization />` — Renders UI for creating an organization.
 - `<Protect />` — Wrapper that shows its contents when the current user has the specified [permission or role](https://clerk.com/docs/organizations/roles-permissions) in the organization.
 
-Note that components should be used for displaying UI, but are not sufficient for protecting routes. To protect a route, you check the value of `userId` in the `auth` local and redirect if it is not set, for example.
+**Note:** Components should be used for displaying UI, but are not sufficient for protecting routes. To protect a route, you check the value of `userId` in the `auth` local and redirect if it is not set, for example.
 
 ```ts
 import { redirect } from '@sveltejs/kit'
