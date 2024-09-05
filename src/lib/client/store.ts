@@ -75,8 +75,6 @@ export const user = derived(auth, ($v) => $v.user)
  * The store returns the active organization of the authenticated user or `null`.
  *
  * @example
- * A simple example:
- *
  * $: console.log('organization id', $organization?.id)
  */
 export const organization = derived(auth, ($v) => $v.organization)
