@@ -64,8 +64,6 @@ export const session = derived(auth, ($v) => $v.session)
  * The store returns back the authenticated user or `null`.
  *
  * @example
- * A simple example:
- *
  * $: console.log('user id', $user?.id)
  */
 export const user = derived(auth, ($v) => $v.user)
