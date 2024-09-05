@@ -26,9 +26,7 @@ export const resources: Writable<Resources> = writable({
  * A store that is prepopulated with the authentication context during SSR.
  *
  * @example
- * A simple example:
- *
- * auth.subscribe((auth) => console.log(auth.userId))
+ * auth.subscribe(auth => console.log(auth.userId))
  */
 export const auth = derived(
 	[resources, isLoaded, initialState],
