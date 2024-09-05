@@ -42,8 +42,6 @@ export const auth = derived(
  * The store returns the clerk client or `null`.
  *
  * @example
- * A simple example:
- *
  * $: console.log('active session', $client?.activeSessions)
  */
 export const client = derived(resources, ($v) => $v.client)
