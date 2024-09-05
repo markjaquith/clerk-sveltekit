@@ -11,9 +11,3 @@ declare global {
 }
 
 export {}
-
-declare global {
-	interface DocumentEventMap {
-		'clerk-sveltekit:user': CustomEvent<UserResource>
-	}
-}
