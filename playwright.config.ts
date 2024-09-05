@@ -20,7 +20,7 @@ export default defineConfig({
 	use: {
 		baseURL,
 		trace: 'retry-with-trace',
-		headless: false,
+		headless: true,
 	},
 
 	projects: [
