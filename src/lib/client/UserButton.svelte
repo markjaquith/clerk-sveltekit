@@ -5,4 +5,4 @@
 	type $$Props = UserButtonProps
 </script>
 
-<div use:clerkUI={{ clerk: $clerk, componentType: 'UserButton', props: $$props }} />
+<div use:clerkUI={{ clerk: $clerk, componentType: 'UserButton', props: $$props }}></div>

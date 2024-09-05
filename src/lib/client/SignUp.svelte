@@ -7,5 +7,5 @@
 </script>
 
 <ClerkLoaded let:clerk>
-	<div use:clerkUI={{ clerk, componentType: 'SignUp', props: {...$$props }}} />
+	<div use:clerkUI={{ clerk, componentType: 'SignUp', props: {...$$props }}}></div>
 </ClerkLoaded>
