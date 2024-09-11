@@ -1,6 +1,6 @@
-import { makeAuthObjectSerializable, stripPrivateDataFromObject } from '@clerk/backend/internal';
-import type { AuthObject } from '@clerk/backend';
-import type { InitialState } from '@clerk/types';
+import { makeAuthObjectSerializable, stripPrivateDataFromObject } from '@clerk/backend/internal'
+import type { AuthObject } from '@clerk/backend'
+import type { InitialState } from '@clerk/types'
 
 /**
  * To enable Clerk SSR support, include this object to the props
@@ -17,9 +17,9 @@ import type { InitialState } from '@clerk/types';
  * };
  */
 export function buildClerkProps(auth: AuthObject) {
-	const initialState = makeAuthObjectSerializable(stripPrivateDataFromObject(auth));
+	const initialState = makeAuthObjectSerializable(stripPrivateDataFromObject(auth))
 
 	return {
-		initialState: JSON.parse(JSON.stringify(initialState)) as InitialState
-	};
+		initialState: JSON.parse(JSON.stringify(initialState)) as InitialState,
+	}
 }

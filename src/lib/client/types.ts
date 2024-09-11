@@ -10,7 +10,7 @@ export interface BrowserClerk extends HeadlessBrowserClerk {
 	components: unknown
 }
 
-export type Clerk = HeadlessBrowserClerk | BrowserClerk;
+export type Clerk = HeadlessBrowserClerk | BrowserClerk
 
 declare global {
 	interface Window {
