@@ -1,7 +1,2 @@
-import initializeClerkClient from './initializeClerkClient.js'
-
-export { initializeClerkClient }
-
-export { clerkUI } from './clerkui.js'
-
-export { clerk, client, session, user, organization } from './store.js'
+export { default as ClerkProvider } from './ClerkProvider.svelte';
+export { useClerkContext } from './context.js'

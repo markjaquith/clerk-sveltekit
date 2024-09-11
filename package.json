@@ -90,10 +90,6 @@
       "types": "./dist/client/Protect.svelte.d.ts",
       "svelte": "./dist/client/Protect.svelte"
     },
-    "./client/store": {
-      "types": "./dist/client/store.d.ts",
-      "svelte": "./dist/client/store.js"
-    },
     "./env": "./dist/env.d.ts"
   },
   "typesVersions": {

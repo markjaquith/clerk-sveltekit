@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { clerk } from '../client/store.js'
 	import type { SignUpProps } from '@clerk/types';
 	import type { HTMLButtonAttributes } from 'svelte/elements'
+	import { useClerkContext } from './context.js'
 
 	export let fallbackRedirectUrl: string | undefined = undefined
 	export let forceRedirectUrl: string | undefined = undefined
@@ -13,6 +13,8 @@
     type $$Props = SignUpProps & HTMLButtonAttributes & {
   		mode?: "redirect" | "modal" | undefined
     }
+
+    const { clerk } = useClerkContext();
 
 	function signUp() {
    	    const opts: SignUpProps = {

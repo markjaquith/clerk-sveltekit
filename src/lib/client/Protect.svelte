@@ -1,7 +1,9 @@
 <script lang="ts">
     import type { CheckAuthorizationWithCustomPermissions, OrganizationCustomPermissionKey, OrganizationCustomRoleKey } from '@clerk/types'
     import ClerkLoaded from './ClerkLoaded.svelte'
-    import { auth } from './store.js'
+	import { useClerkContext } from './context'
+
+    const { auth } = useClerkContext()
 
     export let condition: ((has: CheckAuthorizationWithCustomPermissions) => boolean) | undefined = undefined
     export let role: OrganizationCustomRoleKey | undefined = undefined

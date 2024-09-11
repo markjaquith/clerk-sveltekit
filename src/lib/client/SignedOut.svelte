@@ -1,5 +1,7 @@
 <script lang="ts">
-	import { auth } from '$lib/client/store.js'
+	import { useClerkContext } from './context.js'
+
+	const { auth } = useClerkContext()
 </script>
 
 {#if $auth?.userId === null}
