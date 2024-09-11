@@ -16,7 +16,7 @@ import { deriveState } from '@clerk/shared/deriveState'
 import { setClerkContext } from './context.js'
 
 type $$Props = Without<LoadClerkJsScriptOptions, 'routerPush' | 'routerReplace'> & {
-  initialState?: Record<string, unknown>
+  initialState?: InitialState
 }
 
 const clerk: Writable<HeadlessBrowserClerk | BrowserClerk | null> = writable(null)

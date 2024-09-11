@@ -16,8 +16,6 @@
 	$: path = mounted ? $page.url.pathname : '/'
 
 	export let data: LayoutData;
-
-	console.log('data', data)
 </script>
 
 <ClerkProvider
@@ -26,7 +24,7 @@
     signUpForceRedirectUrl="/admin"
     signInUrl="/sign-in"
     signUpUrl="/sign-up"
-    initialState={data.initialState}
+    {...data}
 >
     <header class="flex gap-8 p-4 items-top">
     	<div class="flex flex-col gap-y-4 gap-x-8 md:flex-row">

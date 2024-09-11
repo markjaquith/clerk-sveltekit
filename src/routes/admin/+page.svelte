@@ -1,13 +1,12 @@
 <script lang="ts">
 	import { useClerkContext } from '$lib/client'
 
-	const { auth, user } = useClerkContext();
+	const { user } = useClerkContext();
 
 	export let data
 </script>
 
 <p>Welcome, {$user?.fullName ?? 'buddy'}!</p>
-<p>user id {$auth.userId}</p>
 <p>You are in the admin panel.</p>
 <p>
 	Since you are here, you get to know a <b>secret</b> that was loaded in a
