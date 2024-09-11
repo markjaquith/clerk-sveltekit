@@ -1,6 +1,5 @@
 <script lang="ts">
     import type { CheckAuthorizationWithCustomPermissions, OrganizationCustomPermissionKey, OrganizationCustomRoleKey } from '@clerk/types'
-    import ClerkLoaded from './ClerkLoaded.svelte'
 	import { useClerkContext } from './context'
 
     const { auth } = useClerkContext()
@@ -39,11 +38,8 @@
     };
 </script>
 
-
-<ClerkLoaded>
-    {#if isAuthorized()}
-        <slot />
-    {:else}
-        <slot name="fallback" />
-    {/if}
-</ClerkLoaded>
+{#if isAuthorized()}
+    <slot />
+{:else}
+    <slot name="fallback" />
+{/if}
