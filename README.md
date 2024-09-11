@@ -78,7 +78,7 @@ export const load = ({ locals }) => {
 ```svelte
 <script lang="ts">
 	import type { LayoutData } from './$types';
-	import { ClerkProvider } from 'clerk-sveltekit/client/ClerkProvider.svelte'
+	import ClerkProvider from 'clerk-sveltekit/client/ClerkProvider.svelte'
 	import { PUBLIC_CLERK_PUBLISHABLE_KEY } from '$env/static/public'
 
 	export let data: LayoutData
