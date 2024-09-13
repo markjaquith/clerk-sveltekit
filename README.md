@@ -57,21 +57,38 @@ declare global {
 }
 ```
 
-### Configure the client hook
+### Add <ClerkProvider> to your root layout
+
+All Clerk components must be children of the `<ClerkProvider>` component, which provides active session and user context.
 
 Add this to `src/hooks.client.ts`:
 
-```typescript
-import { initializeClerkClient } from 'clerk-sveltekit/client'
-import { PUBLIC_CLERK_PUBLISHABLE_KEY } from '$env/static/public'
+```ts
+// src/+layout.server.ts
+import { buildClerkProps } from 'clerk-sveltekit/server'
 
-initializeClerkClient({
-	publishableKey: PUBLIC_CLERK_PUBLISHABLE_KEY,
-	signInForceRedirectUrl: '/',
-	signUpForceRedirectUrl: '/',
-	signInUrl: '/sign-in',
-	signUpUrl: '/sign-up',
-})
+// To enable Clerk SSR support, pass the `initialState` to the `ClerkProvider` component.
+export const load = ({ locals }) => {
+	return {
+		...buildClerkProps(locals.auth),
+	}
+}
+```
+
+```svelte
+<script lang="ts">
+	import type { LayoutData } from './$types';
+	import ClerkProvider from 'clerk-sveltekit/client/ClerkProvider.svelte'
+	import { PUBLIC_CLERK_PUBLISHABLE_KEY } from '$env/static/public'
+
+	export let data: LayoutData
+</script>
+
+<!-- ... -->
+
+<ClerkProvider {...data} publishableKey={PUBLIC_CLERK_PUBLISHABLE_KEY}>
+    <slot />
+</ClerkProvider>
 ```
 
 Customize the protected paths, and the various URLs as you like.
@@ -128,7 +145,7 @@ All components can be imported from `clerk-sveltekit/client/ComponentName.svelte
 - `<ClerkLoaded let:clerk />` — Wrapper that shows its contents (and exposes the `clerk` object) when Clerk is done loading.
 - `<SignIn />` — Renders a sign-in form.
 - `<SignUp />` — Renders a sign-up form.
-- `<SignedIn let:user />` — Wrapper that shows its contents (and exposes the Clerk `user` object) when the user is signed in.
+- `<SignedIn let:user />` — Wrapper that shows its contents when the user is signed in.
 - `<SignedOut />` — Wrapper that shows its contents when the user is not signed in.
 - `<UserButton />` — Button that shows the user’s profile photo with log out link when they are signed in.
 - `<UserProfile />` — Renders the current user’s profile.
@@ -162,6 +179,28 @@ export const load = ({ locals }) => {
 ## Using Clerk data on the server
 
 Server-side protected routes will automatically get a [Clerk user object](https://clerk.com/docs/references/javascript/user/user) injected into `locals.auth` which means you can use it [in a `load()` function](https://kit.svelte.dev/docs/form-actions#loading-data), a [default action](https://kit.svelte.dev/docs/form-actions#default-actions), or a [form action](https://kit.svelte.dev/docs/form-actions).
+
+## Stores
+
+clerk-sveltekit provides a set of useful stores that give you access to the Clerk object:
+
+- `auth` — Contains the current auth state.
+- `user` — Contains the authenticated [user](https://clerk.com/docs/references/javascript/user/user).
+- `organization` — Contains the currently active [organization](https://clerk.com/docs/references/javascript/organization/organization).
+- `session` — Contains the current user's [session](https://clerk.com/docs/references/javascript/session), as well as helpers for setting the active session.
+- `clerk` — Contains the [Clerk](https://clerk.com/docs/references/javascript/clerk/clerk) object. This provides access to some methods that are not available in other stores.
+- `client` — Contains the authenticated sessions in the current device. See the [`Client`](https://clerk.com/docs/references/javascript/client#client) object.
+
+```svelte
+<script lang="ts">
+	import { useClerkContext } from 'clerk-sveltekit/client'
+
+	const { user, organization } = useClerkContext()
+
+	$: console.log('User: ', $user?.fullName)
+	$: console.log('Organization: ', $organization?.name)
+</script>
+```
 
 ## Thanks
 

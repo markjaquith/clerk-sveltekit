@@ -1,5 +1,7 @@
 <script lang="ts">
-	import { isLoaded, clerk } from './store.js'
+	import { useClerkContext } from './context.js'
+
+	const { isLoaded, clerk } = useClerkContext()
 </script>
 
 {#if $isLoaded}

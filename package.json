@@ -30,6 +30,10 @@
       "types": "./dist/server/index.d.ts",
       "svelte": "./dist/server/index.js"
     },
+    "./client/ClerkProvider.svelte": {
+      "types": "./dist/client/ClerkProvider.svelte.d.ts",
+      "svelte": "./dist/client/ClerkProvider.svelte"
+    },
     "./client/ClerkLoaded.svelte": {
       "types": "./dist/client/ClerkLoaded.svelte.d.ts",
       "svelte": "./dist/client/ClerkLoaded.svelte"
@@ -89,10 +93,6 @@
     "./client/Protect.svelte": {
       "types": "./dist/client/Protect.svelte.d.ts",
       "svelte": "./dist/client/Protect.svelte"
-    },
-    "./client/store": {
-      "types": "./dist/client/store.d.ts",
-      "svelte": "./dist/client/store.js"
     },
     "./env": "./dist/env.d.ts"
   },
