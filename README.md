@@ -61,7 +61,7 @@ declare global {
 
 All Clerk components must be children of the `<ClerkProvider>` component, which provides active session and user context.
 
-Add this to `src/hooks.client.ts`:
+Add this to your root layout data loader:
 
 ```ts
 // src/+layout.server.ts
@@ -74,6 +74,8 @@ export const load = ({ locals }) => {
 	}
 }
 ```
+
+and inside your root layout component:
 
 ```svelte
 <script lang="ts">
