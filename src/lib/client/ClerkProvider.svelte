@@ -5,19 +5,18 @@ import {
 	type LoadClerkJsScriptOptions,
 } from '@clerk/shared/loadClerkJsScript'
 import { goto } from '$app/navigation'
+import { page } from '$app/stores'
 
 import { onMount } from 'svelte'
 import { isTruthy } from '@clerk/shared'
 import { env as publicEnv } from '$env/dynamic/public';
 import { derived, writable, type Writable } from 'svelte/store'
-import type { ClientResource, InitialState, Resources, Without } from '@clerk/types'
+import type { ClientResource, Resources, Without } from '@clerk/types'
 import type { BrowserClerk, HeadlessBrowserClerk } from './types.js'
 import { deriveState } from '@clerk/shared/deriveState'
 import { setClerkContext } from './context.js'
 
-type $$Props = Without<LoadClerkJsScriptOptions, 'routerPush' | 'routerReplace'> & {
-  initialState?: InitialState
-}
+type $$Props = Without<LoadClerkJsScriptOptions, 'routerPush' | 'routerReplace'>
 
 const clerk: Writable<HeadlessBrowserClerk | BrowserClerk | null> = writable(null)
 const isLoaded: Writable<boolean> = writable(false)
@@ -30,7 +29,7 @@ const resources: Writable<Resources> = writable({
 const auth = derived(
 	[resources, isLoaded],
 	([$resources, $isLoaded]) => {
-		return deriveState($isLoaded, $resources, $$props.initialState)
+		return deriveState($isLoaded, $resources, $page.data.initialState)
 	}
 )
 const client = derived(resources, ($v) => $v.client)

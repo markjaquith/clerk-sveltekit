@@ -67,7 +67,7 @@ Add this to your root layout data loader:
 // src/+layout.server.ts
 import { buildClerkProps } from 'clerk-sveltekit/server'
 
-// To enable Clerk SSR support, pass the `initialState` to the `ClerkProvider` component.
+// To enable Clerk SSR support, add initial state props to the load function.
 export const load = ({ locals }) => {
 	return {
 		...buildClerkProps(locals.auth),
@@ -78,17 +78,14 @@ export const load = ({ locals }) => {
 and inside your root layout component:
 
 ```svelte
-<script lang="ts">
-	import type { LayoutData } from './$types';
+<script>
 	import ClerkProvider from 'clerk-sveltekit/client/ClerkProvider.svelte'
 	import { PUBLIC_CLERK_PUBLISHABLE_KEY } from '$env/static/public'
-
-	export let data: LayoutData
 </script>
 
 <!-- ... -->
 
-<ClerkProvider {...data} publishableKey={PUBLIC_CLERK_PUBLISHABLE_KEY}>
+<ClerkProvider publishableKey={PUBLIC_CLERK_PUBLISHABLE_KEY}>
     <slot />
 </ClerkProvider>
 ```
