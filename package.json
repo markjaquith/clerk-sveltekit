@@ -202,9 +202,9 @@
     "vite": "^5.0.0"
   },
   "dependencies": {
-    "@clerk/backend": "^1.6.2",
-    "@clerk/shared": "^2.5.1",
-    "@clerk/types": "^4.13.1",
-    "set-cookie-parser": "^2.7.0"
+    "@clerk/backend": "^1.15.1",
+    "@clerk/shared": "^2.10.1",
+    "@clerk/types": "^4.28.0",
+    "set-cookie-parser": "^2.7.1"
   }
 }
