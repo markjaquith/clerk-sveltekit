@@ -41,6 +41,8 @@ test.describe('app', () => {
 		await page.waitForSelector('.cl-signIn-root', { state: 'attached' })
 		await page.locator('input[name=identifier]').fill(process.env.E2E_CLERK_USER_USERNAME!)
 		await page.getByRole('button', { name: 'Continue', exact: true }).click()
+		await page.locator('text="Use another method"').click()
+		await page.locator('text="Sign in with your password"').click()
 		await page.locator('input[name=password]').fill(process.env.E2E_CLERK_USER_PASSWORD!)
 		await page.getByRole('button', { name: 'Continue', exact: true }).click()
 
