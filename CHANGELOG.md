@@ -1,5 +1,11 @@
 # clerk-sveltekit
 
+## 0.4.3
+
+### Patch Changes
+
+- Mark this package as deprecated ([`ef3b4bd`](https://github.com/markjaquith/clerk-sveltekit/commit/ef3b4bd223500e1b25f70d56edabe768d71a27e4))
+
 ## 0.4.2
 
 ### Patch Changes
