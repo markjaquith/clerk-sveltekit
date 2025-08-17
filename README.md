@@ -1,5 +1,11 @@
 # Clerk SvelteKit
 
+> ⚠️ **DEPRECATED** ⚠️
+>
+> This project has been deprecated. We recommend using [Robert Soriano's svelte-clerk](https://github.com/wobsoriano/svelte-clerk) project instead, which adds support for Svelte 5 and newer versions of the Clerk components.
+
+---
+
 Adapter for using [Clerk](https://clerk.com/) authentication in [SvelteKit](https://kit.svelte.dev/).
 
 [Demo](https://clerk-sveltekit.markjaquith.com/)

@@ -152,6 +152,7 @@
   "name": "clerk-sveltekit",
   "version": "0.4.2",
   "description": "Adapter to use Clerk with SvelteKit",
+  "deprecated": "This package is deprecated. Please use svelte-clerk instead: https://github.com/wobsoriano/svelte-clerk",
   "svelte": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "type": "module",
